@@ -6,6 +6,8 @@ ext {
     //Net
     okhttpVersion = '3.4.1'
     retrofitVersion = '2.2.0'
+    rxVersion = '1.2.1'
+    gsonVersion = '2.6.2'
 
     //Test
     junitVersion = '4.12'
