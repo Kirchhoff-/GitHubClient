@@ -10,6 +10,11 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "API_ENDPOINT", '"https://api.github.com/"'
+        buildConfigField "String", "CLIENT_ID", '"fdb64b2a0a4287dfa317"'
+        buildConfigField "String", "CLIENT_SECRET", '"e8f628526531c6e9feb8de6eccb40a3cfd1b2b8b"'
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
