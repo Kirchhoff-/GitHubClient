@@ -54,6 +54,10 @@ dependencies {
     //Preferences
     compile "com.github.orhanobut:hawk:$hawkVersion"
 
+    //View binding
+    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
     // Dependencies for local unit tests
     testCompile "junit:junit:$junitVersion"
     testCompile "org.mockito:mockito-all:$mockitoVersion"
