@@ -4,9 +4,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
+import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.utils.TextUtils;
 import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
 
+import rx.Observable;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -25,16 +27,21 @@ public class AuthPresenter implements AuthContract.Presenter {
     private final BaseSchedulerProvider schedulerProvider;
 
     @NonNull
+    private final KeyValueStorage storage;
+
+    @NonNull
     private CompositeSubscription subscription;
 
 
     public AuthPresenter(@NonNull GitHubDataSource repository,
                          @NonNull AuthContract.View view,
-                         @NonNull BaseSchedulerProvider schedulerProvider) {
+                         @NonNull BaseSchedulerProvider schedulerProvider,
+                         @NonNull KeyValueStorage storage) {
         this.repository = repository;
         this.view = view;
         this.schedulerProvider = schedulerProvider;
         this.subscription = new CompositeSubscription();
+        this.storage = storage;
     }
 
 
@@ -55,6 +62,13 @@ public class AuthPresenter implements AuthContract.Presenter {
                 .observeOn(schedulerProvider.ui())
                 .doOnSubscribe(view::showLoading)
                 .doOnTerminate(view::hideLoading)
+                .flatMap(authorization -> {
+                    storage.saveToken(authorization.getToken());
+                    storage.saveUserName(login);
+                    return Observable.just(authorization);
+                }).doOnError(throwable -> {
+                    storage.clear();
+                })
                 .subscribe(authorization -> view.openRepositoryScreen(),
                         throwable -> view.showAuthError()));
     }

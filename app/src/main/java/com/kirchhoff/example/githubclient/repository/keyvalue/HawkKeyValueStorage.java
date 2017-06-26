@@ -1,6 +1,7 @@
 package com.kirchhoff.example.githubclient.repository.keyvalue;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.orhanobut.hawk.Hawk;
 
@@ -9,6 +10,20 @@ import com.orhanobut.hawk.Hawk;
  */
 
 public class HawkKeyValueStorage implements KeyValueStorage {
+
+    @Nullable
+    private static HawkKeyValueStorage INSTANCE = null;
+
+    private HawkKeyValueStorage() {
+    }
+
+    public static HawkKeyValueStorage getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new HawkKeyValueStorage();
+        }
+
+        return INSTANCE;
+    }
 
     @Override
     public void saveToken(@NonNull String token) {

@@ -59,7 +59,8 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
 
         presenter = new AuthPresenter(Injection.provideGitHubRepository(),
                 this,
-                Injection.provideSchedulerProvider());
+                Injection.provideSchedulerProvider(),
+                Injection.provideKeyValueStorage());
     }
 
     @SuppressWarnings("unused")
