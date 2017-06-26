@@ -1,20 +1,94 @@
 package com.kirchhoff.example.githubclient.ui.auth;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.widget.Button;
 
+import com.kirchhoff.example.githubclient.Injection;
 import com.kirchhoff.example.githubclient.R;
+import com.kirchhoff.example.githubclient.ui.LoadingDialog;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @author Kirchhoff-
  */
 
-public class AuthActivity extends AppCompatActivity {
+public class AuthActivity extends AppCompatActivity implements AuthContract.View {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.loginInputLayout)
+    TextInputLayout loginInputLayout;
+
+    @BindView(R.id.loginEdit)
+    TextInputEditText loginEdit;
+
+    @BindView(R.id.passwordInputLayout)
+    TextInputLayout passwordInputLayout;
+
+    @BindView(R.id.passwordEdit)
+    TextInputEditText passwordEdit;
+
+    @BindView(R.id.enterButton)
+    Button enterButton;
+
+    private LoadingDialog loadingDialog;
+
+    private AuthPresenter presenter;
+
+    public static void start(@NonNull Context context) {
+        Intent intent = new Intent(context, AuthActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_auth);
+        ButterKnife.bind(this);
+
+        presenter = new AuthPresenter(Injection.provideGitHubRepository(),
+                this,
+                Injection.provideSchedulerProvider());
+    }
+
+    @Override
+    public void openRepositoryScreen() {
+
+    }
+
+    @Override
+    public void showLoginError() {
+
+    }
+
+    @Override
+    public void showPasswordError() {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showAuthError() {
+
     }
 }

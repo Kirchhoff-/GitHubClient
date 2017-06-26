@@ -1,6 +1,7 @@
 package com.kirchhoff.example.githubclient.repository;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.kirchhoff.example.githubclient.api.ApiFactory;
 import com.kirchhoff.example.githubclient.model.Authorization;
@@ -18,6 +19,19 @@ import rx.Observable;
 
 public class GitHubRepository implements GitHubDataSource {
 
+    @Nullable
+    private static GitHubRepository INSTANCE = null;
+
+    private GitHubRepository() {
+    }
+
+    public static GitHubRepository getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new GitHubRepository();
+        }
+
+        return INSTANCE;
+    }
 
     @NonNull
     @Override
