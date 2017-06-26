@@ -3,10 +3,12 @@ package com.kirchhoff.example.githubclient.repository;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.kirchhoff.example.githubclient.Constants;
 import com.kirchhoff.example.githubclient.model.Authorization;
 import com.kirchhoff.example.githubclient.model.CommitResponse;
 import com.kirchhoff.example.githubclient.model.Repository;
 
+import java.io.IOException;
 import java.util.List;
 
 import rx.Observable;
@@ -34,7 +36,11 @@ public class FakeGitHubRepository implements GitHubDataSource {
     @NonNull
     @Override
     public Observable<Authorization> auth(@NonNull String login, @NonNull String password) {
-        return null;
+
+        if (Constants.WRONG_LOGIN.equals(login) || Constants.WRONG_PASSWORD.equals(password))
+            return Observable.error(new IOException());
+
+        return Observable.just(new Authorization());
     }
 
     @NonNull
