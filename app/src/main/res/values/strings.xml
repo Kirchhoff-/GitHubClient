@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">GitHubClient</string>
 
+    <string name="auth_title">Authorization</string>
+    <string name="auth_login_hint">Login</string>
+    <string name="auth_password_hint">Password</string>
+    <string name="auth_enter">Enter</string>
+    <string name="auth_login_error">Enter login</string>
+    <string name="auth_password_error">Enter password</string>
+    <string name="auth_error">Authorization Error</string>
 
     <string name="loading">Loading…</string>
 </resources>
