@@ -1,6 +1,6 @@
 package com.kirchhoff.example.githubclient.ui.auth;
 
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * @author Kirchhoff-
@@ -21,10 +21,14 @@ public interface AuthContract {
 
         void hideLoading();
 
+        void showAuthError();
+
     }
 
     interface Presenter {
 
-        void auth(@NonNull String login, @NonNull String password);
+        void auth(@Nullable String login, @Nullable String password);
+
+        void unsubscribe();
     }
 }
