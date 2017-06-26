@@ -1,5 +1,6 @@
 package com.kirchhoff.example.githubclient;
 
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
 import com.kirchhoff.example.githubclient.repository.GitHubRepository;
 import com.kirchhoff.example.githubclient.repository.keyvalue.HawkKeyValueStorage;
 import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
@@ -12,7 +13,7 @@ import com.kirchhoff.example.githubclient.utils.schedulers.SchedulerProvider;
 
 public class Injection {
 
-    public static GitHubRepository provideGitHubRepository() {
+    public static GitHubDataSource provideGitHubRepository() {
         return GitHubRepository.getInstance();
     }
 
