@@ -20,7 +20,7 @@ import rx.Observable;
 
 public interface GitHubService {
 
-    @POST("/authorization")
+    @POST("/authorizations")
     Observable<Authorization> authorize(@Header("Authorization") String authorization,
                                         @Body JsonObject params);
 
