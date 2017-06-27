@@ -1,8 +1,53 @@
 package com.kirchhoff.example.githubclient.ui.repositories;
 
+import android.support.annotation.NonNull;
+
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
+import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
+
+import rx.subscriptions.CompositeSubscription;
+
 /**
  * @author Kirchhoff-
  */
 
-public class RepositoriesPresenter {
+public class RepositoriesPresenter implements RepositoriesContract.Presenter {
+
+    @NonNull
+    private final GitHubDataSource repository;
+
+    @NonNull
+    private final RepositoriesContract.View view;
+
+    @NonNull
+    private final BaseSchedulerProvider schedulerProvider;
+
+    @NonNull
+    private CompositeSubscription subscription;
+
+    public RepositoriesPresenter(@NonNull GitHubDataSource repository,
+                                 @NonNull RepositoriesContract.View view,
+                                 @NonNull BaseSchedulerProvider schedulerProvider) {
+        this.repository = repository;
+        this.view = view;
+        this.schedulerProvider = schedulerProvider;
+        this.subscription = new CompositeSubscription();
+    }
+
+    @Override
+    public void loadRepositoriesList() {
+
+        subscription.add(repository.repositories()
+                .subscribeOn(schedulerProvider.computation())
+                .observeOn(schedulerProvider.ui())
+                .doOnSubscribe(view::showLoading)
+                .doOnTerminate(view::hideLoading)
+                .subscribe(view::showRepositories,
+                        throwable -> view.showError()));
+    }
+
+    @Override
+    public void unsubscribe() {
+        subscription.clear();
+    }
 }

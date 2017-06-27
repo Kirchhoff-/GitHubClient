@@ -26,5 +26,7 @@ public interface RepositoriesContract {
     interface Presenter {
 
         void loadRepositoriesList();
+
+        void unsubscribe();
     }
 }
