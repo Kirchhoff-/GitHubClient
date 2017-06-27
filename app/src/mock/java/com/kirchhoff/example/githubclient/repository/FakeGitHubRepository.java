@@ -9,6 +9,7 @@ import com.kirchhoff.example.githubclient.model.CommitResponse;
 import com.kirchhoff.example.githubclient.model.Repository;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
@@ -46,7 +47,15 @@ public class FakeGitHubRepository implements GitHubDataSource {
     @NonNull
     @Override
     public Observable<List<Repository>> repositories() {
-        return null;
+
+        if (Constants.REPOSITORY_TEST_ENUM == Constants.RepositoryTestEnum.DATA) {
+            return Observable.just(Constants.emulateRepositoryList());
+        } else if (Constants.REPOSITORY_TEST_ENUM == Constants.RepositoryTestEnum.EMPTY) {
+            return Observable.just(new ArrayList<Repository>());
+        }
+
+
+        return Observable.error(new IOException());
     }
 
     @NonNull
