@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/repository_width"
+    android:layout_height="@dimen/repository_height"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="6dp"
+    card_view:contentPadding="@dimen/space_16"
+    tools:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/repositoryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_20"
+                tools:text="GitHub client" />
+
+            <TextView
+                android:id="@+id/repositoryDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textSize="@dimen/text_16"
+                tools:text="Some Repository long long long long long long long long long Description" />
+
+            <TextView
+                android:id="@+id/repositoryLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                android:textSize="@dimen/text_14"
+                tools:text="Java and Kotlin" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout style="@style/RepositoryRowLayout">
+
+                <ImageView
+                    style="@style/RepositoryRowImageView"
+                    android:src="@drawable/ic_star" />
+
+                <TextView
+                    style="@style/RepositoryRowTextView"
+                    tools:text="1" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/RepositoryRowLayout">
+
+                <ImageView
+                    style="@style/RepositoryRowImageView"
+                    android:src="@drawable/ic_fork" />
+
+                <TextView
+                    style="@style/RepositoryRowTextView"
+                    tools:text="2" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/RepositoryRowLayout">
+
+                <ImageView
+                    style="@style/RepositoryRowImageView"
+                    android:src="@drawable/ic_visibility" />
+
+                <TextView
+                    style="@style/RepositoryRowTextView"
+                    tools:text="3" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
