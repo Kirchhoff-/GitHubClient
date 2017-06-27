@@ -3,6 +3,7 @@ package com.kirchhoff.example.githubclient.api;
 import android.support.annotation.NonNull;
 
 import com.kirchhoff.example.githubclient.BuildConfig;
+import com.kirchhoff.example.githubclient.api.interceptor.AuthorizationInterceptor;
 import com.kirchhoff.example.githubclient.api.interceptor.LoggingInterceptor;
 
 import okhttp3.OkHttpClient;
@@ -40,6 +41,7 @@ public class ApiFactory {
     @NonNull
     private static OkHttpClient buildClient() {
         return new OkHttpClient.Builder()
+                .addInterceptor(AuthorizationInterceptor.create())
                 .addInterceptor(LoggingInterceptor.create())
                 .build();
     }
