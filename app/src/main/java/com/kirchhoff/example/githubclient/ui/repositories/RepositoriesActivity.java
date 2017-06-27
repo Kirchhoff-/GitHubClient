@@ -1,4 +1,4 @@
-package com.kirchhoff.example.githubclient.ui;
+package com.kirchhoff.example.githubclient.ui.repositories;
 
 import android.content.Context;
 import android.content.Intent;

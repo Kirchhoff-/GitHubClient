@@ -9,6 +9,7 @@ import android.text.InputType;
 import com.kirchhoff.example.githubclient.Constants;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.ui.auth.AuthActivity;
+import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity;
 import com.kirchhoff.example.githubclient.utils.matchers.ToastMatcher;
 
 import org.junit.After;
