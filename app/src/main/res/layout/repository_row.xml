@@ -64,6 +64,7 @@
                     android:src="@drawable/ic_star" />
 
                 <TextView
+                    android:id="@+id/starCount"
                     style="@style/RepositoryRowTextView"
                     tools:text="1" />
 
@@ -76,6 +77,7 @@
                     android:src="@drawable/ic_fork" />
 
                 <TextView
+                    android:id="@+id/forkCount"
                     style="@style/RepositoryRowTextView"
                     tools:text="2" />
 
@@ -88,6 +90,7 @@
                     android:src="@drawable/ic_visibility" />
 
                 <TextView
+                    android:id="@+id/watchersCount"
                     style="@style/RepositoryRowTextView"
                     tools:text="3" />
 

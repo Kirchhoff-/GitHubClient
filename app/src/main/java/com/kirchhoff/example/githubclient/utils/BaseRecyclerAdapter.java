@@ -30,6 +30,10 @@ public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder, T>
                 }
             };
 
+    public BaseRecyclerAdapter(@NonNull List<T> items) {
+        this.items.addAll(items);
+    }
+
     public final void add(@NonNull T value) {
         items.add(value);
         notifyDataSetChanged();
