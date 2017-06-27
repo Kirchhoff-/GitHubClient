@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.kirchhoff.example.githubclient.Injection;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.ui.LoadingDialog;
+import com.kirchhoff.example.githubclient.ui.RepositoriesActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,7 +73,7 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
 
     @Override
     public void openRepositoryScreen() {
-
+        RepositoriesActivity.start(this);
     }
 
     @Override
