@@ -40,7 +40,7 @@ public class GitHubRepository implements GitHubDataSource {
         String authorizationString = AuthorizationUtils.createAuthorizationString(login, password);
 
         return ApiFactory.getGitHubService().authorize(authorizationString,
-                AuthorizationUtils.createAuthorizationParam());
+                AuthorizationUtils.createAuthorizationParam()).doOnNext(authorization -> ApiFactory.recreate());
     }
 
     @NonNull

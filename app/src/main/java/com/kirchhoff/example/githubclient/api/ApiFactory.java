@@ -28,6 +28,10 @@ public class ApiFactory {
         return service;
     }
 
+    public static void recreate() {
+        service = null;
+    }
+
     @NonNull
     private static Retrofit buildRetrofit() {
         return new Retrofit.Builder()
