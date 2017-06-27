@@ -1,4 +1,4 @@
-package com.kirchhoff.example.githubclient.ui;
+package com.kirchhoff.example.githubclient.ui.general;
 
 
 import android.app.Dialog;

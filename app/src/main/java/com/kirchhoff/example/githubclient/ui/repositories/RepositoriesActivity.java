@@ -8,13 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kirchhoff.example.githubclient.Injection;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.Repository;
+import com.kirchhoff.example.githubclient.ui.general.ScrollChildSwipeRefreshLayout;
 
 import java.util.List;
 
@@ -33,8 +33,8 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
     @BindView(R.id.emptyTextView)
     TextView emptyTextView;
 
-    @BindView(R.id.progressBar)
-    ProgressBar progressBar;
+    @BindView(R.id.swipeRefresh)
+    ScrollChildSwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     RepositoriesAdapter adapter;
@@ -56,18 +56,20 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
                 Injection.provideSchedulerProvider());
 
         presenter.loadRepositoriesList();
+
+        swipeRefreshLayout.setOnRefreshListener(() -> presenter.loadRepositoriesList());
+        swipeRefreshLayout.setScrollUpChild(recyclerView);
     }
 
     @Override
     public void showLoading() {
-        recyclerView.setVisibility(View.GONE);
         emptyTextView.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
+        swipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideLoading() {
-        progressBar.setVisibility(View.GONE);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -94,7 +96,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
     public void showError() {
         recyclerView.setVisibility(View.GONE);
         emptyTextView.setVisibility(View.GONE);
-        progressBar.setVisibility(View.GONE);
+        swipeRefreshLayout.setRefreshing(false);
 
         Toast.makeText(this, R.string.repositories_error, Toast.LENGTH_LONG).show();
     }
