@@ -100,4 +100,18 @@ public class Repository {
         watchersCount = watchersCount < 0 ? 0 : watchersCount;
     }
 
+    //Simplify for now
+    //I know that if you override equels you also need to override hashCode
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Repository repository = (Repository) obj;
+        return name.equals(repository.name);
+    }
 }

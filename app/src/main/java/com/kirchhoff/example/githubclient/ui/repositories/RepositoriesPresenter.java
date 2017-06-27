@@ -42,7 +42,12 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
                 .observeOn(schedulerProvider.ui())
                 .doOnSubscribe(view::showLoading)
                 .doOnTerminate(view::hideLoading)
-                .subscribe(view::showRepositories,
+                .subscribe(repositories -> {
+                            if (repositories == null || repositories.isEmpty())
+                                view.showEmptyView();
+                            else
+                                view.showRepositories(repositories);
+                        },
                         throwable -> view.showError()));
     }
 

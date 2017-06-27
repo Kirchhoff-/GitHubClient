@@ -1,6 +1,6 @@
 package com.kirchhoff.example.githubclient.ui.repositories;
 
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 
 import com.kirchhoff.example.githubclient.model.Repository;
 
@@ -18,7 +18,9 @@ public interface RepositoriesContract {
 
         void hideLoading();
 
-        void showRepositories(@Nullable List<Repository> repository);
+        void showRepositories(@NonNull List<Repository> repository);
+
+        void showEmptyView();
 
         void showError();
     }

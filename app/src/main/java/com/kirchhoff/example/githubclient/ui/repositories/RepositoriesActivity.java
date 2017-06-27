@@ -3,6 +3,7 @@ package com.kirchhoff.example.githubclient.ui.repositories;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -73,23 +74,23 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
     }
 
     @Override
-    public void showRepositories(@Nullable List<Repository> repository) {
-        if (repository == null || repository.isEmpty()) {
-            emptyTextView.setVisibility(View.VISIBLE);
-            recyclerView.setVisibility(View.GONE);
+    public void showRepositories(@NonNull List<Repository> repository) {
+        if (adapter == null) {
+            adapter = new RepositoriesAdapter(repository);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            recyclerView.setAdapter(adapter);
         } else {
-
-            if (adapter == null) {
-                adapter = new RepositoriesAdapter(repository);
-                recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-                recyclerView.setAdapter(adapter);
-            } else {
-                adapter.changeDataSet(repository);
-            }
-
-            emptyTextView.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE);
+            adapter.changeDataSet(repository);
         }
+
+        emptyTextView.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showEmptyView() {
+        emptyTextView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
     }
 
     @Override
