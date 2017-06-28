@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.kirchhoff.example.githubclient.R;
-import com.kirchhoff.example.githubclient.model.Commit;
+import com.kirchhoff.example.githubclient.model.CommitResponse;
 import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter;
 
 import java.util.List;
@@ -14,9 +14,9 @@ import java.util.List;
  * @author Kirchhoff-
  */
 
-public class CommitsAdapter extends BaseRecyclerAdapter<CommitsViewHolder, Commit> {
+public class CommitsAdapter extends BaseRecyclerAdapter<CommitsViewHolder, CommitResponse> {
 
-    public CommitsAdapter(@NonNull List<Commit> items) {
+    public CommitsAdapter(@NonNull List<CommitResponse> items) {
         super(items);
     }
 
@@ -29,7 +29,7 @@ public class CommitsAdapter extends BaseRecyclerAdapter<CommitsViewHolder, Commi
     @Override
     public void onBindViewHolder(CommitsViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        Commit commit = getItem(position);
+        CommitResponse commit = getItem(position);
         holder.bind(commit);
     }
 }

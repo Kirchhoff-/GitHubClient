@@ -13,5 +13,8 @@
     <string name="repositories_empty">You dont have any repository yet</string>
     <string name="repositories_error">Error occurs during getting repository</string>
 
+    <string name="commits_empty">There are not commits for this repository</string>
+    <string name="commits_error">Error occurs during getting repository</string>
+
     <string name="loading">Loading…</string>
 </resources>
