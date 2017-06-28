@@ -20,6 +20,8 @@ public class Constants {
     public static final String WRONG_LOGIN = "WRONG_LOGIN";
     public static final String WRONG_PASSWORD = "WRONG_PASSWORD";
 
+    public static final String REPOSITORY = "REPOSITORY";
+
     //Variable for return different type of data for getRepositoryRequest
     public static DataTestEnum DATA_TEST_ENUM = DataTestEnum.DATA;
 
