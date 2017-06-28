@@ -20,6 +20,7 @@
 
     <dimen name="repository_height">220dp</dimen>
     <dimen name="repository_width">300dp</dimen>
+    <dimen name="commit_height">140dp</dimen>
 
 
 </resources>
