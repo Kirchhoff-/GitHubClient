@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.kirchhoff.example.githubclient.Injection;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.CommitResponse;
+import com.kirchhoff.example.githubclient.model.Repository;
 import com.kirchhoff.example.githubclient.ui.general.ScrollChildSwipeRefreshLayout;
 
 import java.util.List;
@@ -46,9 +47,9 @@ public class CommitsActivity extends AppCompatActivity implements CommitsContrac
 
     private String repositoryArg;
 
-    public static void start(Context context, String repository) {
+    public static void start(Context context, Repository repository) {
         Intent intent = new Intent(context, CommitsActivity.class);
-        intent.putExtra(REPOSITORY_ARG, repository);
+        intent.putExtra(REPOSITORY_ARG, repository.getName());
         context.startActivity(intent);
     }
 
@@ -64,7 +65,7 @@ public class CommitsActivity extends AppCompatActivity implements CommitsContrac
         presenter = new CommitsPresenter(Injection.provideGitHubRepository(), this,
                 Injection.provideSchedulerProvider());
 
-        presenter.loadCommits(getIntent().getStringExtra(repositoryArg));
+        presenter.loadCommits(repositoryArg);
 
         swipeRefreshLayout.setOnRefreshListener(() -> presenter.loadCommits(repositoryArg));
         swipeRefreshLayout.setScrollUpChild(recyclerView);

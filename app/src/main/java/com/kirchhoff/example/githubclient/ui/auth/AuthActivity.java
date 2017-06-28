@@ -55,6 +55,7 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_auth);
         ButterKnife.bind(this);
+        Injection.provideKeyValueStorage().clear();
 
         setSupportActionBar(toolbar);
 

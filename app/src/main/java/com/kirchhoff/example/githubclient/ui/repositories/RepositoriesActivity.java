@@ -15,7 +15,9 @@ import android.widget.Toast;
 import com.kirchhoff.example.githubclient.Injection;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.Repository;
+import com.kirchhoff.example.githubclient.ui.commit.CommitsActivity;
 import com.kirchhoff.example.githubclient.ui.general.ScrollChildSwipeRefreshLayout;
+import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ import butterknife.ButterKnife;
  * @author Kirchhoff-
  */
 
-public class RepositoriesActivity extends AppCompatActivity implements RepositoriesContract.View {
+public class RepositoriesActivity extends AppCompatActivity implements RepositoriesContract.View, BaseRecyclerAdapter.OnItemClickListener<Repository> {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -79,6 +81,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
             adapter = new RepositoriesAdapter(repository);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
             recyclerView.setAdapter(adapter);
+            adapter.setOnItemClickListener(this);
         } else {
             adapter.changeDataSet(repository);
         }
@@ -106,5 +109,15 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
     protected void onPause() {
         super.onPause();
         presenter.unsubscribe();
+    }
+
+    @Override
+    public void onItemClick(@NonNull Repository item) {
+        presenter.onRepositoryClick(item);
+    }
+
+    @Override
+    public void openRepository(@NonNull Repository repository) {
+        CommitsActivity.start(this, repository);
     }
 }

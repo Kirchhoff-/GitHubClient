@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <activity
             android:name=".ui.auth.AuthActivity"
             android:label="@string/auth_title"
@@ -25,7 +24,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.repositories.RepositoriesActivity" />
+        <activity
+            android:name=".ui.repositories.RepositoriesActivity"
+            android:label="@string/repositories_title" />
+
+        <activity android:name=".ui.commit.CommitsActivity" />
 
     </application>
 

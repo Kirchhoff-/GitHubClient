@@ -20,6 +20,8 @@ public interface RepositoriesContract {
 
         void showRepositories(@NonNull List<Repository> repository);
 
+        void openRepository(@NonNull Repository repository);
+
         void showEmptyView();
 
         void showError();
@@ -28,6 +30,8 @@ public interface RepositoriesContract {
     interface Presenter {
 
         void loadRepositoriesList();
+
+        void onRepositoryClick(@NonNull Repository repository);
 
         void unsubscribe();
     }

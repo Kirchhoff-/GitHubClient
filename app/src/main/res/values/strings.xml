@@ -9,7 +9,7 @@
     <string name="auth_password_error">Enter password</string>
     <string name="auth_error">Authorization Error</string>
 
-
+    <string name="repositories_title">Repositories</string>
     <string name="repositories_empty">You dont have any repository yet</string>
     <string name="repositories_error">Error occurs during getting repository</string>
 

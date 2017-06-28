@@ -3,6 +3,7 @@ package com.kirchhoff.example.githubclient.repository;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.kirchhoff.example.githubclient.Injection;
 import com.kirchhoff.example.githubclient.api.ApiFactory;
 import com.kirchhoff.example.githubclient.model.Authorization;
 import com.kirchhoff.example.githubclient.model.CommitResponse;
@@ -52,6 +53,7 @@ public class GitHubRepository implements GitHubDataSource {
     @NonNull
     @Override
     public Observable<List<CommitResponse>> getCommits(@NonNull String repos) {
-        return ApiFactory.getGitHubService().commits(null, repos);
+        return ApiFactory.getGitHubService()
+                .commits(Injection.provideKeyValueStorage().getUserName(), repos);
     }
 }

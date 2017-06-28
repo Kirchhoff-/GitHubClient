@@ -2,6 +2,7 @@ package com.kirchhoff.example.githubclient.ui.repositories;
 
 import android.support.annotation.NonNull;
 
+import com.kirchhoff.example.githubclient.model.Repository;
 import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
 import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
 
@@ -49,6 +50,11 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
                                 view.showRepositories(repositories);
                         },
                         throwable -> view.showError()));
+    }
+
+    @Override
+    public void onRepositoryClick(@NonNull Repository repository) {
+        view.openRepository(repository);
     }
 
     @Override
