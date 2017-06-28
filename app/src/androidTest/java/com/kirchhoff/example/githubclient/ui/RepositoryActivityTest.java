@@ -37,7 +37,7 @@ public class RepositoryActivityTest {
 
     @Test
     public void testErrorRepositories() throws Exception {
-        Constants.REPOSITORY_TEST_ENUM = Constants.RepositoryTestEnum.ERROR;
+        Constants.DATA_TEST_ENUM = Constants.DataTestEnum.ERROR;
 
         launchActivity();
         onView(withText(R.string.repositories_error)).inRoot(new ToastMatcher())
@@ -50,7 +50,7 @@ public class RepositoryActivityTest {
 
     @Test
     public void testEmptyRepositories() throws Exception {
-        Constants.REPOSITORY_TEST_ENUM = Constants.RepositoryTestEnum.EMPTY;
+        Constants.DATA_TEST_ENUM = Constants.DataTestEnum.EMPTY;
 
         launchActivity();
         onView(withId(R.id.emptyTextView)).check(matches(isDisplayed()));
@@ -59,7 +59,7 @@ public class RepositoryActivityTest {
 
     @Test
     public void testSuccessRepositories() throws Exception {
-        Constants.REPOSITORY_TEST_ENUM = Constants.RepositoryTestEnum.DATA;
+        Constants.DATA_TEST_ENUM = Constants.DataTestEnum.DATA;
 
         launchActivity();
         onView(withId(R.id.emptyTextView)).check(matches(not(isDisplayed())));

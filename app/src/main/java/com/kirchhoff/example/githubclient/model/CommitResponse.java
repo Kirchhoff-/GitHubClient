@@ -19,4 +19,16 @@ public class CommitResponse {
     }
 
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        CommitResponse commitResponse = (CommitResponse) obj;
+        return commitResponse.commit.getMessage().equals(commit.getMessage());
+    }
 }

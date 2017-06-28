@@ -48,9 +48,9 @@ public class FakeGitHubRepository implements GitHubDataSource {
     @Override
     public Observable<List<Repository>> repositories() {
 
-        if (Constants.REPOSITORY_TEST_ENUM == Constants.RepositoryTestEnum.DATA) {
+        if (Constants.DATA_TEST_ENUM == Constants.DataTestEnum.DATA) {
             return Observable.just(Constants.emulateRepositoryList());
-        } else if (Constants.REPOSITORY_TEST_ENUM == Constants.RepositoryTestEnum.EMPTY) {
+        } else if (Constants.DATA_TEST_ENUM == Constants.DataTestEnum.EMPTY) {
             return Observable.just(new ArrayList<Repository>());
         }
 
@@ -61,6 +61,12 @@ public class FakeGitHubRepository implements GitHubDataSource {
     @NonNull
     @Override
     public Observable<List<CommitResponse>> getCommits(@NonNull String repos) {
-        return null;
+        if (Constants.DATA_TEST_ENUM == Constants.DataTestEnum.DATA) {
+            return Observable.just(Constants.emulateCommitsList());
+        } else if (Constants.DATA_TEST_ENUM == Constants.DataTestEnum.EMPTY) {
+            return Observable.just(new ArrayList<CommitResponse>());
+        }
+
+        return Observable.error(new IOException());
     }
 }

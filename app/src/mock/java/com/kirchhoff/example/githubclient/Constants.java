@@ -1,5 +1,6 @@
 package com.kirchhoff.example.githubclient;
 
+import com.kirchhoff.example.githubclient.model.CommitResponse;
 import com.kirchhoff.example.githubclient.model.Repository;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Constants {
     public static final String WRONG_PASSWORD = "WRONG_PASSWORD";
 
     //Variable for return different type of data for getRepositoryRequest
-    public static RepositoryTestEnum REPOSITORY_TEST_ENUM = RepositoryTestEnum.DATA;
+    public static DataTestEnum DATA_TEST_ENUM = DataTestEnum.DATA;
 
     public static List<Repository> emulateRepositoryList() {
         Repository repository1 = new Repository("GitHub1", "description1", "Java1", 1, 1, 1);
@@ -43,7 +44,28 @@ public class Constants {
         return list;
     }
 
-    public enum RepositoryTestEnum {
+    public static List<CommitResponse> emulateCommitsList() {
+        CommitResponse commit1 = new CommitResponse();
+        CommitResponse commit2 = new CommitResponse();
+        CommitResponse commit3 = new CommitResponse();
+        CommitResponse commit4 = new CommitResponse();
+        CommitResponse commit5 = new CommitResponse();
+        CommitResponse commit6 = new CommitResponse();
+        CommitResponse commit7 = new CommitResponse();
+
+        List<CommitResponse> list = new ArrayList<>();
+        list.add(commit1);
+        list.add(commit2);
+        list.add(commit3);
+        list.add(commit4);
+        list.add(commit5);
+        list.add(commit6);
+        list.add(commit7);
+
+        return list;
+    }
+
+    public enum DataTestEnum {
         DATA,
         EMPTY,
         ERROR

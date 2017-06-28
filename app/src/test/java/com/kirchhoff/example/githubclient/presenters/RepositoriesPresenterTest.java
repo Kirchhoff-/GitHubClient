@@ -43,7 +43,7 @@ public class RepositoriesPresenterTest {
 
     @Test
     public void testRepositoriesError() throws Exception {
-        Constants.REPOSITORY_TEST_ENUM = Constants.RepositoryTestEnum.ERROR;
+        Constants.DATA_TEST_ENUM = Constants.DataTestEnum.ERROR;
         presenter.loadRepositoriesList();
 
         Mockito.verify(view).showLoading();
@@ -55,7 +55,7 @@ public class RepositoriesPresenterTest {
 
     @Test
     public void testRepositoriesEmpty() throws Exception {
-        Constants.REPOSITORY_TEST_ENUM = Constants.RepositoryTestEnum.EMPTY;
+        Constants.DATA_TEST_ENUM = Constants.DataTestEnum.EMPTY;
         presenter.loadRepositoriesList();
 
         Mockito.verify(view).showLoading();
@@ -67,7 +67,7 @@ public class RepositoriesPresenterTest {
 
     @Test
     public void testRepositoriesSuccess() throws Exception {
-        Constants.REPOSITORY_TEST_ENUM = Constants.RepositoryTestEnum.DATA;
+        Constants.DATA_TEST_ENUM = Constants.DataTestEnum.DATA;
         presenter.loadRepositoriesList();
 
         Mockito.verify(view).showLoading();
