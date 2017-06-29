@@ -15,7 +15,6 @@
         <activity
             android:name=".ui.auth.AuthActivity"
             android:label="@string/auth_title"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

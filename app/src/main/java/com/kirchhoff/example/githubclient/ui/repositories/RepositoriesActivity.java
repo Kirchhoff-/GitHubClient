@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,9 @@ import butterknife.ButterKnife;
  */
 
 public class RepositoriesActivity extends AppCompatActivity implements RepositoriesContract.View, BaseRecyclerAdapter.OnItemClickListener<Repository> {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -54,6 +58,8 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_repositories);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         presenter = new RepositoriesPresenter(Injection.provideGitHubRepository(), this,
                 Injection.provideSchedulerProvider());
