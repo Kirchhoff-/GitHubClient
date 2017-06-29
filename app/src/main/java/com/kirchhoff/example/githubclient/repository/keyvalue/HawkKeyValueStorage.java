@@ -48,16 +48,6 @@ public class HawkKeyValueStorage implements KeyValueStorage {
     }
 
     @Override
-    public void savePassedKey() {
-        Hawk.put(PASSED_KEY, true);
-    }
-
-    @Override
-    public boolean isPassedKeyExist() {
-        return Hawk.get(PASSED_KEY, false);
-    }
-
-    @Override
     public void clear() {
         Hawk.clear();
     }

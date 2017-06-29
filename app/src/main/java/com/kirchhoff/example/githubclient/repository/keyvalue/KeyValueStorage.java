@@ -22,9 +22,5 @@ public interface KeyValueStorage {
     @NonNull
     String getUserName();
 
-    void savePassedKey();
-
-    boolean isPassedKeyExist();
-
     void clear();
 }
