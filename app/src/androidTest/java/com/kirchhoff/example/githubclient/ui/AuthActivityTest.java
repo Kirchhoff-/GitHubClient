@@ -32,6 +32,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withInputType;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.kirchhoff.example.githubclient.utils.matchers.CustomMatcher.withInputHint;
+import static com.kirchhoff.example.githubclient.utils.matchers.CustomViewInteraction.matchToolbarTitle;
 import static com.kirchhoff.example.githubclient.utils.matchers.InputLayoutErrorMatcher.withInputError;
 import static org.hamcrest.core.AllOf.allOf;
 
@@ -58,6 +59,8 @@ public class AuthActivityTest {
 
     @Test
     public void testEmptyInputFields() throws Exception {
+        testTitle();
+
         onView(withId(R.id.loginEdit)).check(matches(allOf(
                 withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE),
                 isFocusable(),
@@ -82,6 +85,8 @@ public class AuthActivityTest {
 
     @Test
     public void testLoginButtonShown() throws Exception {
+        testTitle();
+
         onView(withId(R.id.enterButton)).check(matches(allOf(
                 withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE),
                 isClickable(),
@@ -91,6 +96,8 @@ public class AuthActivityTest {
 
     @Test
     public void testInputDisplayed() throws Exception {
+        testTitle();
+
         onView(withId(R.id.loginEdit)).perform(typeText(Constants.LOGIN));
         closeSoftKeyboard();
 
@@ -104,6 +111,8 @@ public class AuthActivityTest {
 
     @Test
     public void testLoginErrorDisplayed() throws Exception {
+        testTitle();
+
         onView(withId(R.id.passwordEdit)).perform(typeText(Constants.PASSWORD));
         closeSoftKeyboard();
         onView(withId(R.id.enterButton)).perform(click());
@@ -114,6 +123,8 @@ public class AuthActivityTest {
 
     @Test
     public void testPasswordErrorDisplayed() throws Exception {
+        testTitle();
+
         onView(withId(R.id.loginEdit)).perform(typeText(Constants.LOGIN));
         closeSoftKeyboard();
         onView(withId(R.id.enterButton)).perform(click());
@@ -124,6 +135,8 @@ public class AuthActivityTest {
 
     @Test
     public void testErrorAuth() throws Exception {
+        testTitle();
+
         onView(withId(R.id.loginEdit)).perform(typeText(Constants.LOGIN));
         onView(withId(R.id.passwordEdit)).perform(typeText(Constants.WRONG_PASSWORD));
         closeSoftKeyboard();
@@ -136,6 +149,8 @@ public class AuthActivityTest {
 
     @Test
     public void testSuccessAuth() throws Exception {
+        testTitle();
+
         onView(withId(R.id.loginEdit)).perform(typeText(Constants.LOGIN));
         onView(withId(R.id.passwordEdit)).perform(typeText(Constants.PASSWORD));
         closeSoftKeyboard();
@@ -145,5 +160,9 @@ public class AuthActivityTest {
         Intents.intended(hasComponent(RepositoriesActivity.class.getName()));
     }
 
+    private void testTitle() throws Exception {
+        matchToolbarTitle(activityRule.getActivity().getString(R.string.auth_title))
+                .check(matches(isDisplayed()));
+    }
 
 }
