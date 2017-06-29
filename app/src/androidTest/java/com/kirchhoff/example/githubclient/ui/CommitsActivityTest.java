@@ -22,6 +22,7 @@ import static android.support.test.espresso.contrib.RecyclerViewActions.scrollTo
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.kirchhoff.example.githubclient.utils.matchers.CustomViewInteraction.matchToolbarTitle;
 import static org.hamcrest.core.IsNot.not;
 
 /**
@@ -41,6 +42,8 @@ public class CommitsActivityTest {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.ERROR;
 
         launchActivity();
+        testTitle();
+
         onView(withText(R.string.commits_error)).inRoot(new ToastMatcher())
                 .check(matches(isDisplayed()));
 
@@ -53,6 +56,8 @@ public class CommitsActivityTest {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.EMPTY;
 
         launchActivity();
+        testTitle();
+
         onView(withId(R.id.emptyTextView)).check(matches(isDisplayed()));
         onView(withId(R.id.emptyTextView)).check(matches(withText(R.string.commits_empty)));
     }
@@ -62,6 +67,8 @@ public class CommitsActivityTest {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.DATA;
 
         launchActivity();
+        testTitle();
+
         onView(withId(R.id.emptyTextView)).check(matches(not(isDisplayed())));
         onView(withId(R.id.recyclerView)).check(matches(isDisplayed()));
 
@@ -76,5 +83,10 @@ public class CommitsActivityTest {
         Intent intent = new Intent(context, RepositoriesActivity.class);
         intent.putExtra(CommitsActivity.REPOSITORY_ARG, Constants.emulateRepository().getName());
         activityRule.launchActivity(intent);
+    }
+
+    private void testTitle() {
+        matchToolbarTitle(Constants.REPOSITORY)
+                .check(matches(isDisplayed()));
     }
 }

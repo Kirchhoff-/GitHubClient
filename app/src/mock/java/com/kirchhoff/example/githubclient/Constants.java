@@ -29,7 +29,7 @@ public class Constants {
     public static DataTestEnum DATA_TEST_ENUM = DataTestEnum.DATA;
 
     public static Repository emulateRepository() {
-        return new Repository("GitHub1", "description1", "Java1", 1, 1, 1);
+        return new Repository(REPOSITORY, "description1", "Java1", 1, 1, 1);
     }
 
     public static List<Repository> emulateRepositoryList() {

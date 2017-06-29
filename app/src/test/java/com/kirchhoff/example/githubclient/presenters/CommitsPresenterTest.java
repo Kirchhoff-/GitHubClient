@@ -42,7 +42,7 @@ public class CommitsPresenterTest {
     }
 
     @Test
-    public void testRepositoriesError() throws Exception {
+    public void testCommitsError() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.ERROR;
         presenter.loadCommits(Constants.REPOSITORY);
 
@@ -54,7 +54,7 @@ public class CommitsPresenterTest {
     }
 
     @Test
-    public void testRepositoriesEmpty() throws Exception {
+    public void testCommitsEmpty() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.EMPTY;
         presenter.loadCommits(Constants.REPOSITORY);
 
@@ -66,7 +66,7 @@ public class CommitsPresenterTest {
     }
 
     @Test
-    public void testRepositoriesSuccess() throws Exception {
+    public void testCommitsSuccess() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.DATA;
         presenter.loadCommits(Constants.REPOSITORY);
 
