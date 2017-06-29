@@ -28,6 +28,10 @@ public class Constants {
     //Variable for return different type of data for getRepositoryRequest
     public static DataTestEnum DATA_TEST_ENUM = DataTestEnum.DATA;
 
+    public static Repository emulateRepository() {
+        return new Repository("GitHub1", "description1", "Java1", 1, 1, 1);
+    }
+
     public static List<Repository> emulateRepositoryList() {
         Repository repository1 = new Repository("GitHub1", "description1", "Java1", 1, 1, 1);
         Repository repository2 = new Repository("GitHub2", "description2", "Java2", 2, 2, 2);

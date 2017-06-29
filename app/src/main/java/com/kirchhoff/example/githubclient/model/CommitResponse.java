@@ -13,6 +13,10 @@ public class CommitResponse {
     @SerializedName("commit")
     private Commit commit;
 
+    public CommitResponse() {
+        commit = new Commit();
+    }
+
     @NonNull
     public Commit getCommit() {
         return commit;

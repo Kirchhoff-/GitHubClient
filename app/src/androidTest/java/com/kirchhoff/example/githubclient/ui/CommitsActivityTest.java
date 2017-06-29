@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.kirchhoff.example.githubclient.Constants;
 import com.kirchhoff.example.githubclient.R;
+import com.kirchhoff.example.githubclient.ui.commit.CommitsActivity;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity;
 import com.kirchhoff.example.githubclient.utils.matchers.ToastMatcher;
 
@@ -28,37 +29,36 @@ import static org.hamcrest.core.IsNot.not;
  */
 
 @RunWith(AndroidJUnit4.class)
-public class RepositoryActivityTest {
+public class CommitsActivityTest {
 
     @Rule
-    public final ActivityTestRule<RepositoriesActivity> activityRule =
-            new ActivityTestRule<>(RepositoriesActivity.class, false, false);
+    public final ActivityTestRule<CommitsActivity> activityRule =
+            new ActivityTestRule<>(CommitsActivity.class, false, false);
 
 
     @Test
-    public void testErrorRepositories() throws Exception {
+    public void testErrorCommits() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.ERROR;
 
         launchActivity();
-        onView(withText(R.string.repositories_error)).inRoot(new ToastMatcher())
+        onView(withText(R.string.commits_error)).inRoot(new ToastMatcher())
                 .check(matches(isDisplayed()));
 
         onView(withId(R.id.recyclerView)).check(matches(not(isDisplayed())));
         onView(withId(R.id.emptyTextView)).check(matches(not(isDisplayed())));
     }
 
-
     @Test
-    public void testEmptyRepositories() throws Exception {
+    public void testEmptyCommits() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.EMPTY;
 
         launchActivity();
         onView(withId(R.id.emptyTextView)).check(matches(isDisplayed()));
-        onView(withId(R.id.emptyTextView)).check(matches(withText(R.string.repositories_empty)));
+        onView(withId(R.id.emptyTextView)).check(matches(withText(R.string.commits_empty)));
     }
 
     @Test
-    public void testSuccessRepositories() throws Exception {
+    public void testSuccessCommits() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.DATA;
 
         launchActivity();
@@ -74,6 +74,7 @@ public class RepositoryActivityTest {
     private void launchActivity() {
         Context context = InstrumentationRegistry.getContext();
         Intent intent = new Intent(context, RepositoriesActivity.class);
+        intent.putExtra(CommitsActivity.REPOSITORY_ARG, Constants.emulateRepository().getName());
         activityRule.launchActivity(intent);
     }
 }

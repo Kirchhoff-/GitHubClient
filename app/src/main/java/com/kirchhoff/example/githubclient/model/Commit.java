@@ -18,6 +18,12 @@ public class Commit {
     @SerializedName("message")
     private String message;
 
+    public Commit() {
+        author = new Author();
+        message = "";
+        repoName = "";
+    }
+
     @NonNull
     public String getRepoName() {
         return repoName;

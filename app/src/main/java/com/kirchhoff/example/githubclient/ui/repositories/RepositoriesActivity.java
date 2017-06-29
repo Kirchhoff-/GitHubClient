@@ -115,12 +115,14 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
         emptyTextView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
+        swipeRefreshLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showEmptyView() {
         emptyTextView.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
+        swipeRefreshLayout.setVisibility(View.GONE);
     }
 
     @Override

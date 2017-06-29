@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 
 public class CommitsActivity extends AppCompatActivity implements CommitsContract.View {
 
-    private final static String REPOSITORY_ARG = "REPOSITORY_ARG";
+    public final static String REPOSITORY_ARG = "REPOSITORY_ARG";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -100,12 +100,14 @@ public class CommitsActivity extends AppCompatActivity implements CommitsContrac
 
         emptyTextView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
+        swipeRefreshLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showEmptyView() {
         emptyTextView.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
+        swipeRefreshLayout.setVisibility(View.GONE);
     }
 
     @Override
