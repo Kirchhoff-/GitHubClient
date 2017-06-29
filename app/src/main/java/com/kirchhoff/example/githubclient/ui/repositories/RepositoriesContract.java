@@ -22,6 +22,8 @@ public interface RepositoriesContract {
 
         void openRepository(@NonNull Repository repository);
 
+        void moveToAuth();
+
         void showEmptyView();
 
         void showError();
@@ -32,6 +34,8 @@ public interface RepositoriesContract {
         void loadRepositoriesList();
 
         void onRepositoryClick(@NonNull Repository repository);
+
+        void logout();
 
         void unsubscribe();
     }

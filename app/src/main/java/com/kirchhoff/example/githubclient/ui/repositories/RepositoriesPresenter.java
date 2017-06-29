@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.kirchhoff.example.githubclient.model.Repository;
 import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
+import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
 
 import rx.subscriptions.CompositeSubscription;
@@ -21,15 +22,20 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
     private final RepositoriesContract.View view;
 
     @NonNull
+    private final KeyValueStorage storage;
+
+    @NonNull
     private final BaseSchedulerProvider schedulerProvider;
 
     @NonNull
     private CompositeSubscription subscription;
 
     public RepositoriesPresenter(@NonNull GitHubDataSource repository,
+                                 @NonNull KeyValueStorage storage,
                                  @NonNull RepositoriesContract.View view,
                                  @NonNull BaseSchedulerProvider schedulerProvider) {
         this.repository = repository;
+        this.storage = storage;
         this.view = view;
         this.schedulerProvider = schedulerProvider;
         this.subscription = new CompositeSubscription();
@@ -55,6 +61,13 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
     @Override
     public void onRepositoryClick(@NonNull Repository repository) {
         view.openRepository(repository);
+    }
+
+    @Override
+    public void logout() {
+        storage.clear();
+        repository.logout();
+        view.moveToAuth();
     }
 
     @Override

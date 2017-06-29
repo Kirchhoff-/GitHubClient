@@ -56,4 +56,9 @@ public class GitHubRepository implements GitHubDataSource {
         return ApiFactory.getGitHubService()
                 .commits(Injection.provideKeyValueStorage().getUserName(), repos);
     }
+
+    @Override
+    public void logout() {
+        ApiFactory.recreate();
+    }
 }

@@ -24,4 +24,6 @@ public interface GitHubDataSource {
 
     @NonNull
     Observable<List<CommitResponse>> getCommits(@NonNull String repos);
+
+    void logout();
 }
