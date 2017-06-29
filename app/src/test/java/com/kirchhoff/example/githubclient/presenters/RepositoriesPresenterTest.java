@@ -2,6 +2,7 @@ package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
 import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.model.Repository;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesContract;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesPresenter;
 
@@ -75,6 +76,25 @@ public class RepositoriesPresenterTest {
         Mockito.verify(view).hideLoading();
         Mockito.verify(view).showRepositories(Constants.emulateRepositoryList());
 
+        Mockito.verifyNoMoreInteractions(view);
+    }
+
+    @Test
+    public void testLogout() throws Exception {
+
+        presenter.logout();
+
+        Mockito.verify(view).moveToAuth();
+        Mockito.verifyNoMoreInteractions(view);
+    }
+
+    @Test
+    public void testOpenRepository() throws Exception {
+        Repository repository = new Repository();
+
+        presenter.onRepositoryClick(repository);
+
+        Mockito.verify(view).openRepository(repository);
         Mockito.verifyNoMoreInteractions(view);
     }
 
