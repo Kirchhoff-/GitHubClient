@@ -50,16 +50,6 @@ public class FakeKeyValueStorage implements KeyValueStorage {
     }
 
     @Override
-    public void savePassedKey() {
-
-    }
-
-    @Override
-    public boolean isPassedKeyExist() {
-        return false;
-    }
-
-    @Override
     public void clear() {
 
     }

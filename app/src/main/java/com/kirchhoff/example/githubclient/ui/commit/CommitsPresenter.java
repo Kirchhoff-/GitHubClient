@@ -46,7 +46,7 @@ public class CommitsPresenter implements CommitsContract.Presenter {
                     if (commitResponses == null || commitResponses.isEmpty()) {
                         view.showEmptyView();
                     } else {
-                        view.showCommits(commitResponses);
+                        view.openCommits(commitResponses);
                     }
                 }, throwable -> view.showError()));
     }

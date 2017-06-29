@@ -3,6 +3,8 @@ package com.kirchhoff.example.githubclient.ui.repositories;
 import android.support.annotation.NonNull;
 
 import com.kirchhoff.example.githubclient.model.Repository;
+import com.kirchhoff.example.githubclient.ui.BasePresenter;
+import com.kirchhoff.example.githubclient.ui.BaseView;
 
 import java.util.List;
 
@@ -12,11 +14,7 @@ import java.util.List;
 
 public interface RepositoriesContract {
 
-    interface View {
-
-        void showLoading();
-
-        void hideLoading();
+    interface View extends BaseView {
 
         void showRepositories(@NonNull List<Repository> repository);
 
@@ -25,18 +23,14 @@ public interface RepositoriesContract {
         void moveToAuth();
 
         void showEmptyView();
-
-        void showError();
     }
 
-    interface Presenter {
+    interface Presenter extends BasePresenter {
 
         void loadRepositoriesList();
 
         void onRepositoryClick(@NonNull Repository repository);
 
         void logout();
-
-        void unsubscribe();
     }
 }

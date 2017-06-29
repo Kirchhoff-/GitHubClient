@@ -70,7 +70,7 @@ public class AuthPresenter implements AuthContract.Presenter {
                     storage.clear();
                 })
                 .subscribe(authorization -> view.openRepositoryScreen(),
-                        throwable -> view.showAuthError()));
+                        throwable -> view.showError()));
     }
 
     @Override

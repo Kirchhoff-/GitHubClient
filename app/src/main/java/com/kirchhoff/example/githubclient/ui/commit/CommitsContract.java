@@ -3,6 +3,8 @@ package com.kirchhoff.example.githubclient.ui.commit;
 import android.support.annotation.NonNull;
 
 import com.kirchhoff.example.githubclient.model.CommitResponse;
+import com.kirchhoff.example.githubclient.ui.BasePresenter;
+import com.kirchhoff.example.githubclient.ui.BaseView;
 
 import java.util.List;
 
@@ -12,24 +14,17 @@ import java.util.List;
 
 public interface CommitsContract {
 
-    interface View {
+    interface View extends BaseView {
 
-        void showLoading();
-
-        void hideLoading();
-
-        void showCommits(@NonNull List<CommitResponse> commitList);
+        void openCommits(@NonNull List<CommitResponse> commitList);
 
         void showEmptyView();
-
-        void showError();
     }
 
 
-    interface Presenter {
+    interface Presenter extends BasePresenter {
 
         void loadCommits(@NonNull String repository);
 
-        void unsubscribe();
     }
 }

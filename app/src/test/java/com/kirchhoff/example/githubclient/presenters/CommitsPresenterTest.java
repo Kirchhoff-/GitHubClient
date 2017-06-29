@@ -72,7 +72,7 @@ public class CommitsPresenterTest {
 
         Mockito.verify(view).showLoading();
         Mockito.verify(view).hideLoading();
-        Mockito.verify(view).showCommits(Constants.emulateCommitsList());
+        Mockito.verify(view).openCommits(Constants.emulateCommitsList());
 
         Mockito.verifyNoMoreInteractions(view);
     }

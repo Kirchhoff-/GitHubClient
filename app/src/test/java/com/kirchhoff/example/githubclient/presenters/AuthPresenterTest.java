@@ -73,7 +73,7 @@ public class AuthPresenterTest {
 
         Mockito.verify(view).showLoading();
         Mockito.verify(view).hideLoading();
-        Mockito.verify(view).showAuthError();
+        Mockito.verify(view).showError();
 
         Mockito.verifyNoMoreInteractions(view);
     }

@@ -2,6 +2,9 @@ package com.kirchhoff.example.githubclient.ui.auth;
 
 import android.support.annotation.Nullable;
 
+import com.kirchhoff.example.githubclient.ui.BasePresenter;
+import com.kirchhoff.example.githubclient.ui.BaseView;
+
 /**
  * @author Kirchhoff-
  */
@@ -9,7 +12,7 @@ import android.support.annotation.Nullable;
 public interface AuthContract {
 
 
-    interface View {
+    interface View extends BaseView {
 
         void openRepositoryScreen();
 
@@ -17,18 +20,11 @@ public interface AuthContract {
 
         void showPasswordError();
 
-        void showLoading();
-
-        void hideLoading();
-
-        void showAuthError();
-
     }
 
-    interface Presenter {
+    interface Presenter extends BasePresenter {
 
         void auth(@Nullable String login, @Nullable String password);
 
-        void unsubscribe();
     }
 }

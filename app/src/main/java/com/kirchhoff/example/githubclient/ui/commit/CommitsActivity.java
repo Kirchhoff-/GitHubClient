@@ -89,7 +89,7 @@ public class CommitsActivity extends AppCompatActivity implements CommitsContrac
     }
 
     @Override
-    public void showCommits(@NonNull List<CommitResponse> commitList) {
+    public void openCommits(@NonNull List<CommitResponse> commitList) {
         if (adapter == null) {
             adapter = new CommitsAdapter(commitList);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

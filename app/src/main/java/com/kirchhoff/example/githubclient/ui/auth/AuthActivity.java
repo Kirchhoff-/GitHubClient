@@ -108,7 +108,7 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
     }
 
     @Override
-    public void showAuthError() {
+    public void showError() {
         Toast.makeText(this, R.string.auth_error, Toast.LENGTH_LONG).show();
     }
 }
