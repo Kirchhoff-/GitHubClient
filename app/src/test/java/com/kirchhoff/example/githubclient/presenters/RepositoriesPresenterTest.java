@@ -1,7 +1,7 @@
 package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.DataModule;
 import com.kirchhoff.example.githubclient.model.Repository;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesContract;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesPresenter;
@@ -32,9 +32,9 @@ public class RepositoriesPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        presenter = new RepositoriesPresenter(Injection.provideGitHubRepository(),
-                Injection.provideKeyValueStorage(),
-                view, Injection.provideSchedulerProvider());
+        presenter = new RepositoriesPresenter(DataModule.provideGitHubRepository(),
+                DataModule.provideKeyValueStorage(),
+                view, DataModule.provideSchedulerProvider());
     }
 
     @Test

@@ -1,7 +1,7 @@
 package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.DataModule;
 import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.ui.splash.SplashContract;
 import com.kirchhoff.example.githubclient.ui.splash.SplashPresenter;
@@ -34,7 +34,7 @@ public class SplashPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        storage = Injection.provideKeyValueStorage();
+        storage = DataModule.provideKeyValueStorage();
 
         presenter = new SplashPresenter(storage, view);
     }

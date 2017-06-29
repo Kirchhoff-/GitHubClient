@@ -13,13 +13,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.GitHubApplication;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.CommitResponse;
 import com.kirchhoff.example.githubclient.model.Repository;
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
 import com.kirchhoff.example.githubclient.ui.general.ScrollChildSwipeRefreshLayout;
+import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +52,10 @@ public class CommitsActivity extends AppCompatActivity implements CommitsContrac
     CommitsAdapter adapter;
 
     CommitsPresenter presenter;
-
+    @Inject
+    GitHubDataSource repository;
+    @Inject
+    BaseSchedulerProvider schedulerProvider;
     private String repositoryArg;
 
     public static void start(Context context, Repository repository) {
@@ -68,8 +75,9 @@ public class CommitsActivity extends AppCompatActivity implements CommitsContrac
         repositoryArg = getIntent().getStringExtra(REPOSITORY_ARG);
         setTitle(repositoryArg);
 
-        presenter = new CommitsPresenter(Injection.provideGitHubRepository(), this,
-                Injection.provideSchedulerProvider());
+        GitHubApplication.getAppComponent().injectCommitsActivity(this);
+        presenter = new CommitsPresenter(repository, this,
+                schedulerProvider);
 
         presenter.loadCommits(repositoryArg);
 

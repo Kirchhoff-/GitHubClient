@@ -20,18 +20,7 @@ import rx.Observable;
 
 public class FakeGitHubRepository implements GitHubDataSource {
 
-    @Nullable
-    private static FakeGitHubRepository INSTANCE = null;
-
-    private FakeGitHubRepository() {
-    }
-
-    public static FakeGitHubRepository getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new FakeGitHubRepository();
-        }
-
-        return INSTANCE;
+    public FakeGitHubRepository() {
     }
 
     @NonNull

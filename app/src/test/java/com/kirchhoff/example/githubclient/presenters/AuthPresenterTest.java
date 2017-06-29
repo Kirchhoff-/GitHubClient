@@ -1,7 +1,7 @@
 package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.DataModule;
 import com.kirchhoff.example.githubclient.ui.auth.AuthContract;
 import com.kirchhoff.example.githubclient.ui.auth.AuthPresenter;
 
@@ -31,8 +31,8 @@ public class AuthPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        presenter = new AuthPresenter(Injection.provideGitHubRepository(), view,
-                Injection.provideSchedulerProvider(), Injection.provideKeyValueStorage());
+        presenter = new AuthPresenter(DataModule.provideGitHubRepository(), view,
+                DataModule.provideSchedulerProvider(), DataModule.provideKeyValueStorage());
     }
 
 

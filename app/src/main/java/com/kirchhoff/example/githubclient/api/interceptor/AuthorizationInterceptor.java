@@ -2,7 +2,7 @@ package com.kirchhoff.example.githubclient.api.interceptor;
 
 import android.support.annotation.NonNull;
 
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.GitHubApplication;
 import com.kirchhoff.example.githubclient.utils.TextUtils;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class AuthorizationInterceptor implements Interceptor {
     private final String token;
 
     private AuthorizationInterceptor() {
-        token = Injection.provideKeyValueStorage().getToken();
+        token = GitHubApplication.getAppComponent().keyValueStorage().getToken();
     }
 
     @NonNull

@@ -7,21 +7,33 @@ import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
 import com.kirchhoff.example.githubclient.utils.schedulers.SchedulerProvider;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+
 /**
  * @author Kirchhoff-
  */
 
-public class Injection {
+@Module
+public class DataModule {
 
-    public static GitHubDataSource provideGitHubRepository() {
-        return GitHubRepository.getInstance();
+    @Provides
+    @Singleton
+    public GitHubDataSource provideGitHubRepository() {
+        return new GitHubRepository();
     }
 
-    public static BaseSchedulerProvider provideSchedulerProvider() {
-        return SchedulerProvider.getInstance();
+    @Provides
+    @Singleton
+    public BaseSchedulerProvider provideSchedulerProvider() {
+        return new SchedulerProvider();
     }
 
-    public static KeyValueStorage provideKeyValueStorage() {
-        return HawkKeyValueStorage.getInstance();
+    @Provides
+    @Singleton
+    public KeyValueStorage provideKeyValueStorage() {
+        return new HawkKeyValueStorage();
     }
 }

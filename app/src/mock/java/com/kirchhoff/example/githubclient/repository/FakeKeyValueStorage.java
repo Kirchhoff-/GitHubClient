@@ -1,7 +1,6 @@
 package com.kirchhoff.example.githubclient.repository;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 
@@ -11,19 +10,9 @@ import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 
 public class FakeKeyValueStorage implements KeyValueStorage {
 
-    @Nullable
-    private static FakeKeyValueStorage INSTANCE = null;
     private String userName;
 
-    private FakeKeyValueStorage() {
-    }
-
-    public static FakeKeyValueStorage getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new FakeKeyValueStorage();
-        }
-
-        return INSTANCE;
+    public FakeKeyValueStorage() {
     }
 
 

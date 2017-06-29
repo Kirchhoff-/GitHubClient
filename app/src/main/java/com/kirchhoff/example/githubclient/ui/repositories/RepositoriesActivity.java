@@ -15,15 +15,20 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.GitHubApplication;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.Repository;
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
+import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.ui.auth.AuthActivity;
 import com.kirchhoff.example.githubclient.ui.commit.CommitsActivity;
 import com.kirchhoff.example.githubclient.ui.general.ScrollChildSwipeRefreshLayout;
 import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter;
+import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +56,15 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
     RepositoriesPresenter presenter;
 
+    @Inject
+    GitHubDataSource repository;
+
+    @Inject
+    KeyValueStorage storage;
+
+    @Inject
+    BaseSchedulerProvider schedulerProvider;
+
     public static void start(Context context) {
         Intent intent = new Intent(context, RepositoriesActivity.class);
         context.startActivity(intent);
@@ -64,10 +78,11 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
         setSupportActionBar(toolbar);
 
-        presenter = new RepositoriesPresenter(Injection.provideGitHubRepository(),
-                Injection.provideKeyValueStorage(),
+        GitHubApplication.getAppComponent().injectRepositoriesActivity(this);
+        presenter = new RepositoriesPresenter(repository,
+                storage,
                 this,
-                Injection.provideSchedulerProvider());
+                schedulerProvider);
 
         presenter.loadRepositoriesList();
 

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.GitHubApplication;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.ui.auth.AuthActivity;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity;
@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_splash);
 
-        presenter = new SplashPresenter(Injection.provideKeyValueStorage(), this);
+        presenter = new SplashPresenter(GitHubApplication.getAppComponent().keyValueStorage(), this);
     }
 
     @Override

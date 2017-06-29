@@ -1,7 +1,7 @@
 package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.DataModule;
 import com.kirchhoff.example.githubclient.ui.commit.CommitsContract;
 import com.kirchhoff.example.githubclient.ui.commit.CommitsPresenter;
 
@@ -31,8 +31,8 @@ public class CommitsPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        presenter = new CommitsPresenter(Injection.provideGitHubRepository(),
-                view, Injection.provideSchedulerProvider());
+        presenter = new CommitsPresenter(DataModule.provideGitHubRepository(),
+                view, DataModule.provideSchedulerProvider());
     }
 
     @Test

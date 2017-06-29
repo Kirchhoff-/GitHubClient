@@ -11,10 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.GitHubApplication;
 import com.kirchhoff.example.githubclient.R;
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
+import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.ui.general.LoadingDialog;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity;
+import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,9 +45,13 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
 
     @BindView(R.id.passwordEdit)
     TextInputEditText passwordEdit;
-
+    @Inject
+    GitHubDataSource repository;
+    @Inject
+    KeyValueStorage storage;
+    @Inject
+    BaseSchedulerProvider schedulerProvider;
     private LoadingDialog loadingDialog;
-
     private AuthPresenter presenter;
 
     public static void start(@NonNull Context context) {
@@ -55,13 +64,14 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_auth);
         ButterKnife.bind(this);
+        GitHubApplication.getAppComponent().injectAuthActivity(this);
 
         setSupportActionBar(toolbar);
 
-        presenter = new AuthPresenter(Injection.provideGitHubRepository(),
+        presenter = new AuthPresenter(repository,
                 this,
-                Injection.provideSchedulerProvider(),
-                Injection.provideKeyValueStorage());
+                schedulerProvider,
+                storage);
     }
 
     @SuppressWarnings("unused")

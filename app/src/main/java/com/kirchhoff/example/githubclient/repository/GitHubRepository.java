@@ -1,9 +1,8 @@
 package com.kirchhoff.example.githubclient.repository;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import com.kirchhoff.example.githubclient.Injection;
+import com.kirchhoff.example.githubclient.GitHubApplication;
 import com.kirchhoff.example.githubclient.api.ApiFactory;
 import com.kirchhoff.example.githubclient.model.Authorization;
 import com.kirchhoff.example.githubclient.model.CommitResponse;
@@ -20,18 +19,7 @@ import rx.Observable;
 
 public class GitHubRepository implements GitHubDataSource {
 
-    @Nullable
-    private static GitHubRepository INSTANCE = null;
-
-    private GitHubRepository() {
-    }
-
-    public static GitHubRepository getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new GitHubRepository();
-        }
-
-        return INSTANCE;
+    public GitHubRepository() {
     }
 
     @NonNull
@@ -54,7 +42,8 @@ public class GitHubRepository implements GitHubDataSource {
     @Override
     public Observable<List<CommitResponse>> getCommits(@NonNull String repos) {
         return ApiFactory.getGitHubService()
-                .commits(Injection.provideKeyValueStorage().getUserName(), repos);
+                .commits(GitHubApplication.getAppComponent().keyValueStorage().getUserName()
+                        , repos);
     }
 
     @Override
