@@ -63,6 +63,10 @@ dependencies {
     //Preferences
     compile "com.github.orhanobut:hawk:$hawkVersion"
 
+    //Dagger2
+    compile "com.google.dagger:dagger:$daggerVersion"
+    apt "com.google.dagger:dagger-compiler:$daggerVersion"
+
     //View binding
     compile "com.jakewharton:butterknife:$butterKnifeVersion"
     apt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"

@@ -12,6 +12,9 @@ ext {
     //Preferences
     hawkVersion = '1.23'
 
+    //DI
+    daggerVersion = '2.10'
+
     //View
     butterKnifeVersion = '8.3.0'
 
