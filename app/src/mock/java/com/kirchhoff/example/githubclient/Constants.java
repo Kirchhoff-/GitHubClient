@@ -22,6 +22,9 @@ public class Constants {
 
     public static final String REPOSITORY = "REPOSITORY";
 
+    public static final String EMPTY_USER_NAME = "";
+    public static final String USER_NAME = "USER_NAME";
+
     //Variable for return different type of data for getRepositoryRequest
     public static DataTestEnum DATA_TEST_ENUM = DataTestEnum.DATA;
 

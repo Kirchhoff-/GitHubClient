@@ -13,6 +13,7 @@ public class FakeKeyValueStorage implements KeyValueStorage {
 
     @Nullable
     private static FakeKeyValueStorage INSTANCE = null;
+    private String userName;
 
     private FakeKeyValueStorage() {
     }
@@ -39,13 +40,13 @@ public class FakeKeyValueStorage implements KeyValueStorage {
 
     @Override
     public void saveUserName(@NonNull String userName) {
-
+        this.userName = userName;
     }
 
     @NonNull
     @Override
     public String getUserName() {
-        return null;
+        return userName;
     }
 
     @Override

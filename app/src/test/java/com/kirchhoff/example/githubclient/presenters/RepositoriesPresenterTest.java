@@ -32,6 +32,7 @@ public class RepositoriesPresenterTest {
         MockitoAnnotations.initMocks(this);
 
         presenter = new RepositoriesPresenter(Injection.provideGitHubRepository(),
+                Injection.provideKeyValueStorage(),
                 view, Injection.provideSchedulerProvider());
     }
 

@@ -69,4 +69,9 @@ public class FakeGitHubRepository implements GitHubDataSource {
 
         return Observable.error(new IOException());
     }
+
+    @Override
+    public void logout() {
+        //Empty
+    }
 }
