@@ -151,5 +151,6 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
     @Override
     public void moveToAuth() {
         AuthActivity.start(this);
+        finish();
     }
 }

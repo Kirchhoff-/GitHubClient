@@ -74,6 +74,7 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
     @Override
     public void openRepositoryScreen() {
         RepositoriesActivity.start(this);
+        finish();
     }
 
     @Override
