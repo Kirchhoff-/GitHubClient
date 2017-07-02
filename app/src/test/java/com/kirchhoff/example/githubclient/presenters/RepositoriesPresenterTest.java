@@ -1,10 +1,15 @@
 package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
-import com.kirchhoff.example.githubclient.DataModule;
 import com.kirchhoff.example.githubclient.model.Repository;
+import com.kirchhoff.example.githubclient.repository.FakeGitHubRepository;
+import com.kirchhoff.example.githubclient.repository.FakeKeyValueStorage;
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
+import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesContract;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesPresenter;
+import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
+import com.kirchhoff.example.githubclient.utils.schedulers.ImmediateSchedulerProvider;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,9 +37,11 @@ public class RepositoriesPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        presenter = new RepositoriesPresenter(DataModule.provideGitHubRepository(),
-                DataModule.provideKeyValueStorage(),
-                view, DataModule.provideSchedulerProvider());
+        GitHubDataSource repository = new FakeGitHubRepository();
+        KeyValueStorage keyValueStorage = new FakeKeyValueStorage();
+        BaseSchedulerProvider provider = new ImmediateSchedulerProvider();
+
+        presenter = new RepositoriesPresenter(repository, keyValueStorage, view, provider);
     }
 
     @Test

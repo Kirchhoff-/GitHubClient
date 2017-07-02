@@ -1,9 +1,12 @@
 package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
-import com.kirchhoff.example.githubclient.DataModule;
+import com.kirchhoff.example.githubclient.repository.FakeGitHubRepository;
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
 import com.kirchhoff.example.githubclient.ui.commit.CommitsContract;
 import com.kirchhoff.example.githubclient.ui.commit.CommitsPresenter;
+import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
+import com.kirchhoff.example.githubclient.utils.schedulers.ImmediateSchedulerProvider;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,8 +34,10 @@ public class CommitsPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        presenter = new CommitsPresenter(DataModule.provideGitHubRepository(),
-                view, DataModule.provideSchedulerProvider());
+        GitHubDataSource repository = new FakeGitHubRepository();
+        BaseSchedulerProvider provider = new ImmediateSchedulerProvider();
+
+        presenter = new CommitsPresenter(repository, view, provider);
     }
 
     @Test
@@ -42,7 +47,7 @@ public class CommitsPresenterTest {
     }
 
     @Test
-    public void testRepositoriesError() throws Exception {
+    public void testCommitsError() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.ERROR;
         presenter.loadCommits(Constants.REPOSITORY);
 
@@ -54,7 +59,7 @@ public class CommitsPresenterTest {
     }
 
     @Test
-    public void testRepositoriesEmpty() throws Exception {
+    public void testCommitsEmpty() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.EMPTY;
         presenter.loadCommits(Constants.REPOSITORY);
 
@@ -66,7 +71,7 @@ public class CommitsPresenterTest {
     }
 
     @Test
-    public void testRepositoriesSuccess() throws Exception {
+    public void testCommitsSuccess() throws Exception {
         Constants.DATA_TEST_ENUM = Constants.DataTestEnum.DATA;
         presenter.loadCommits(Constants.REPOSITORY);
 

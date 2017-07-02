@@ -1,9 +1,14 @@
 package com.kirchhoff.example.githubclient.presenters;
 
 import com.kirchhoff.example.githubclient.Constants;
-import com.kirchhoff.example.githubclient.DataModule;
+import com.kirchhoff.example.githubclient.repository.FakeGitHubRepository;
+import com.kirchhoff.example.githubclient.repository.FakeKeyValueStorage;
+import com.kirchhoff.example.githubclient.repository.GitHubDataSource;
+import com.kirchhoff.example.githubclient.repository.keyvalue.KeyValueStorage;
 import com.kirchhoff.example.githubclient.ui.auth.AuthContract;
 import com.kirchhoff.example.githubclient.ui.auth.AuthPresenter;
+import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider;
+import com.kirchhoff.example.githubclient.utils.schedulers.ImmediateSchedulerProvider;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,8 +36,11 @@ public class AuthPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        presenter = new AuthPresenter(DataModule.provideGitHubRepository(), view,
-                DataModule.provideSchedulerProvider(), DataModule.provideKeyValueStorage());
+        GitHubDataSource repository = new FakeGitHubRepository();
+        BaseSchedulerProvider provider = new ImmediateSchedulerProvider();
+        KeyValueStorage storage = new FakeKeyValueStorage();
+
+        presenter = new AuthPresenter(repository, view, provider, storage);
     }
 
 
