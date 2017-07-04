@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply from: '../versions.gradle'
 apply plugin: 'android-apt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 
 android {
@@ -57,6 +59,10 @@ dependencies {
     //Preferences
     compile "com.github.orhanobut:hawk:$hawkVersion"
 
+    //Kotlin & extensions
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compile "org.jetbrains.anko:anko-common:$ankoVersion"
+
     //View binding
     compile "com.jakewharton:butterknife:$butterKnifeVersion"
     apt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
@@ -80,4 +86,5 @@ dependencies {
     androidTestCompile "com.android.support:recyclerview-v7:$supportVersion"
     androidTestCompile "com.android.support:appcompat-v7:$supportVersion"
     androidTestCompile "com.android.support:design:$supportVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
 }
