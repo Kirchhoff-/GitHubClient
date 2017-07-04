@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply from: '../versions.gradle'
+apply plugin: 'android-apt'
+
 
 android {
     compileSdkVersion 25
@@ -10,12 +12,26 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "API_ENDPOINT", '"https://api.github.com/"'
+        buildConfigField "String", "CLIENT_ID", '"fdb64b2a0a4287dfa317"'
+        buildConfigField "String", "CLIENT_SECRET", '"e8f628526531c6e9feb8de6eccb40a3cfd1b2b8b"'
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        mock {
+
+        }
+        prod {
+
         }
     }
 }
@@ -33,6 +49,17 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    compile "com.google.code.gson:gson:$gsonVersion"
+    compile "io.reactivex:rxandroid:$rxVersion"
+    compile "io.reactivex:rxjava:$rxVersion"
+
+    //Preferences
+    compile "com.github.orhanobut:hawk:$hawkVersion"
+
+    //View binding
+    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // Dependencies for local unit tests
     testCompile "junit:junit:$junitVersion"
@@ -45,12 +72,12 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
 
     androidTestCompile "com.android.support:support-annotations:$supportVersion"
     androidTestCompile "com.android.support:support-v4:$supportVersion"
     androidTestCompile "com.android.support:recyclerview-v7:$supportVersion"
     androidTestCompile "com.android.support:appcompat-v7:$supportVersion"
     androidTestCompile "com.android.support:design:$supportVersion"
-
-
 }
