@@ -14,7 +14,9 @@ data class Commit(val repoName: String,
                   @SerializedName("author") val author: Author,
                   @SerializedName("message") val message: String)
 
-data class CommitResponse(@SerializedName("commit") val commit: Commit)
+data class CommitResponse(@SerializedName("commit") val commit: Commit) {
+    constructor() : this(Commit("repoName", Author("Author"), "message"))
+}
 
 data class Repository(@SerializedName("name") val name: String,
                       @SerializedName("description") val description: String,
