@@ -1,5 +1,6 @@
 package com.kirchhoff.example.githubclient.repository
 
+import com.kirchhoff.example.githubclient.Injection
 import com.kirchhoff.example.githubclient.api.ApiFactory
 import com.kirchhoff.example.githubclient.model.Authorization
 import com.kirchhoff.example.githubclient.model.CommitResponse
@@ -16,17 +17,17 @@ object GitHubRepository : GitHubDataSource {
         val authorizationString = AuthorizationUtils.createAuthorizationString(login, password)
 
         return ApiFactory.getGitHubService().authorize(authorizationString,
-                AuthorizationUtils.createAuthorizationParam())
+                AuthorizationUtils.createAuthorizationParam()).doOnNext { ApiFactory.recreate() }
     }
 
     override fun repositories(): Observable<List<Repository>> =
             ApiFactory.getGitHubService().repositories()
 
     override fun getCommits(repos: String): Observable<List<CommitResponse>> =
-            ApiFactory.getGitHubService().commits("", repos)
+            ApiFactory.getGitHubService().commits(Injection.provideKeyValueStorage().userName, repos)
 
     override fun logout() {
-        //Empty for now
+        ApiFactory.recreate()
     }
 
 }

@@ -1,6 +1,7 @@
 package com.kirchhoff.example.githubclient.api
 
 import com.kirchhoff.example.githubclient.BuildConfig
+import com.kirchhoff.example.githubclient.api.interceptor.AuthorizationInterceptor
 import com.kirchhoff.example.githubclient.api.interceptor.LoggingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -12,8 +13,13 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object ApiFactory {
 
-    public fun getGitHubService(): GitHubService
-            = buildRetrofit().create(GitHubService::class.java)
+    private var service: GitHubService? = null
+    fun getGitHubService(): GitHubService {
+        if (service == null)
+            service = buildRetrofit().create(GitHubService::class.java)
+
+        return service!!
+    }
 
     private fun buildRetrofit() =
             Retrofit.Builder()
@@ -25,6 +31,11 @@ object ApiFactory {
 
     private fun buildClient(): OkHttpClient =
             OkHttpClient.Builder()
+                    .addInterceptor(AuthorizationInterceptor.create())
                     .addInterceptor(LoggingInterceptor.create())
-                    .build();
+                    .build()
+
+    fun recreate() {
+        service = null
+    }
 }
