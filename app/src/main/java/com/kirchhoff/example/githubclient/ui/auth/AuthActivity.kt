@@ -1,12 +1,13 @@
 package com.kirchhoff.example.githubclient.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.kirchhoff.example.githubclient.Injection
 import com.kirchhoff.example.githubclient.R
 import com.kirchhoff.example.githubclient.extensions.getString
 import com.kirchhoff.example.githubclient.ui.general.LoadingDialog
+import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity
 import kotlinx.android.synthetic.main.a_auth.*
 import org.jetbrains.anko.toast
 
@@ -48,7 +49,9 @@ class AuthActivity : AppCompatActivity(), AuthContract.View {
     }
 
     override fun openRepositoryScreen() {
-        Log.d("TAG", "OpenRepositoryScreen")
+        startActivity(Intent(this,
+                RepositoriesActivity::class.java))
+        finish()
     }
 
     override fun showLoginError() {
