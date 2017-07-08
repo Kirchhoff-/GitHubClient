@@ -1,11 +1,9 @@
 package com.kirchhoff.example.githubclient.presenters
 
 import com.kirchhoff.example.githubclient.Constants
-import com.kirchhoff.example.githubclient.repository.FakeGitHubRepository
-import com.kirchhoff.example.githubclient.repository.FakeKeyValueStorage
+import com.kirchhoff.example.githubclient.Injection
 import com.kirchhoff.example.githubclient.ui.auth.AuthContract
 import com.kirchhoff.example.githubclient.ui.auth.AuthPresenter
-import com.kirchhoff.example.githubclient.utils.schedulers.ImmediateSchedulerProvider
 import junit.framework.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
@@ -32,8 +30,8 @@ class AuthPresenterTest {
     fun init() {
         MockitoAnnotations.initMocks(this)
 
-        presenter = AuthPresenter(FakeGitHubRepository, view,
-                ImmediateSchedulerProvider(), FakeKeyValueStorage)
+        presenter = AuthPresenter(Injection.provideGitHubRepository(),
+                view, Injection.provideSchedulerProvider(), Injection.provideKeyValueStorage())
     }
 
     @Test
