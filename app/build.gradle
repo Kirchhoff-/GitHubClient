@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply from: '../versions.gradle'
-apply plugin: 'android-apt'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -62,10 +61,6 @@ dependencies {
     //Kotlin & extensions
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile "org.jetbrains.anko:anko-common:$ankoVersion"
-
-    //View binding
-    compile "com.jakewharton:butterknife:$butterKnifeVersion"
-    apt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // Dependencies for local unit tests
     testCompile "junit:junit:$junitVersion"
