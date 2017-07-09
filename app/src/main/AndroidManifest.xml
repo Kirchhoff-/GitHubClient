@@ -20,9 +20,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.auth.AuthActivity" />
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:label="@string/auth_title" />
 
-        <activity android:name=".ui.repositories.RepositoriesActivity" />
+        <activity
+            android:name=".ui.repositories.RepositoriesActivity"
+            android:label="@string/repositories_title" />
 
         <activity android:name=".ui.commit.CommitsActivity" />
     </application>

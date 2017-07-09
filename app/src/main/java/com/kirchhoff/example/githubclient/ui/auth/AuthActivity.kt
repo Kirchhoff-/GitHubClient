@@ -9,6 +9,7 @@ import com.kirchhoff.example.githubclient.extensions.getString
 import com.kirchhoff.example.githubclient.ui.general.LoadingDialog
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity
 import kotlinx.android.synthetic.main.a_auth.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.toast
 
 
@@ -23,6 +24,8 @@ class AuthActivity : AppCompatActivity(), AuthContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_auth)
+
+        setSupportActionBar(toolbar)
 
         enterButton.setOnClickListener {
             presenter.auth(loginEdit.getString(),

@@ -14,6 +14,7 @@ import com.kirchhoff.example.githubclient.ui.auth.AuthActivity
 import com.kirchhoff.example.githubclient.ui.commit.CommitsActivity
 import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter
 import kotlinx.android.synthetic.main.a_repositories.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.toast
 
 
@@ -29,6 +30,7 @@ class RepositoriesActivity : AppCompatActivity(), RepositoriesContract.View, Bas
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_repositories)
 
+        setSupportActionBar(toolbar)
         presenter = RepositoriesPresenter(Injection.provideGitHubRepository(),
                 this, Injection.provideSchedulerProvider(), Injection.provideKeyValueStorage())
 

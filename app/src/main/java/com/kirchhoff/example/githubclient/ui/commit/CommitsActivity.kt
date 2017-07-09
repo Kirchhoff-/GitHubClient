@@ -8,6 +8,7 @@ import com.kirchhoff.example.githubclient.R
 import com.kirchhoff.example.githubclient.extensions.setVisible
 import com.kirchhoff.example.githubclient.model.CommitResponse
 import kotlinx.android.synthetic.main.a_commits.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.toast
 
 /**
@@ -27,10 +28,12 @@ class CommitsActivity : AppCompatActivity(), CommitsContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_commits)
 
+        setSupportActionBar(toolbar)
         presenter = CommitsPresenter(Injection.provideGitHubRepository(),
                 this, Injection.provideSchedulerProvider())
 
         val repositoryArg = intent.getStringExtra(REPOSITORY_ARG)
+        title = repositoryArg
 
         presenter.loadCommits(repositoryArg)
 
