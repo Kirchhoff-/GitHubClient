@@ -12,6 +12,7 @@ import com.kirchhoff.example.githubclient.Constants
 import com.kirchhoff.example.githubclient.R
 import com.kirchhoff.example.githubclient.ui.commit.CommitsActivity
 import com.kirchhoff.example.githubclient.ui.commit.CommitsViewHolder
+import com.kirchhoff.example.githubclient.utils.matchers.CustomViewInteraction
 import com.kirchhoff.example.githubclient.utils.matchers.ToastMatcher
 import org.hamcrest.Matchers.not
 import org.junit.Rule
@@ -67,6 +68,15 @@ class CommitsActivityTest {
                 .perform(scrollToPosition<CommitsViewHolder>(0))
                 .perform(scrollToPosition<CommitsViewHolder>(5))
                 .perform(scrollToPosition<CommitsViewHolder>(1))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testTitle() {
+        launchActivity()
+
+        CustomViewInteraction.matchToolbarTitle(Constants.REPOSITORY)
+                .check(matches(isDisplayed()))
     }
 
     private fun launchActivity() {

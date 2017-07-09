@@ -15,6 +15,7 @@ import com.kirchhoff.example.githubclient.Constants
 import com.kirchhoff.example.githubclient.R
 import com.kirchhoff.example.githubclient.ui.auth.AuthActivity
 import com.kirchhoff.example.githubclient.utils.matchers.CustomMatcher
+import com.kirchhoff.example.githubclient.utils.matchers.CustomViewInteraction
 import com.kirchhoff.example.githubclient.utils.matchers.InputLayoutErrorMatcher.withInputError
 import com.kirchhoff.example.githubclient.utils.matchers.ToastMatcher
 import org.hamcrest.core.AllOf.allOf
@@ -144,5 +145,12 @@ class AuthActivityTest {
         closeSoftKeyboard()
 
         onView(withId(R.id.enterButton)).perform(click())
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testTitle() {
+        CustomViewInteraction.matchToolbarTitle(activityRule.activity.getString(R.string.auth_title))
+                .check(matches(isDisplayed()));
     }
 }

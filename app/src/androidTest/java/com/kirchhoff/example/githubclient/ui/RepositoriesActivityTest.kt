@@ -13,6 +13,7 @@ import com.kirchhoff.example.githubclient.Constants
 import com.kirchhoff.example.githubclient.R
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesViewHolder
+import com.kirchhoff.example.githubclient.utils.matchers.CustomViewInteraction
 import com.kirchhoff.example.githubclient.utils.matchers.ToastMatcher
 import org.hamcrest.core.IsNot.not
 import org.junit.Before
@@ -82,6 +83,15 @@ class RepositoriesActivityTest {
                 .perform(scrollToPosition<RepositoriesViewHolder>(0))
                 .perform(scrollToPosition<RepositoriesViewHolder>(5))
                 .perform(scrollToPosition<RepositoriesViewHolder>(1))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testTitle() {
+        launchActivity()
+
+        CustomViewInteraction.matchToolbarTitle(activityRule.activity.getString(R.string.repositories_title))
+                .check(matches(isDisplayed()))
     }
 
     private fun launchActivity() {
