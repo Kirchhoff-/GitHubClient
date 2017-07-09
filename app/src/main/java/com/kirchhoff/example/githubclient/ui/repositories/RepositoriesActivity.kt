@@ -11,6 +11,8 @@ import com.kirchhoff.example.githubclient.R
 import com.kirchhoff.example.githubclient.extensions.setVisible
 import com.kirchhoff.example.githubclient.model.Repository
 import com.kirchhoff.example.githubclient.ui.auth.AuthActivity
+import com.kirchhoff.example.githubclient.ui.commit.CommitsActivity
+import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter
 import kotlinx.android.synthetic.main.a_repositories.*
 import org.jetbrains.anko.toast
 
@@ -18,7 +20,7 @@ import org.jetbrains.anko.toast
 /**
  * @author Kirchhoff-
  */
-class RepositoriesActivity : AppCompatActivity(), RepositoriesContract.View {
+class RepositoriesActivity : AppCompatActivity(), RepositoriesContract.View, BaseRecyclerAdapter.OnItemClickListener<Repository> {
 
     private lateinit var presenter: RepositoriesPresenter
     private var adapter: RepositoriesAdapter? = null
@@ -70,6 +72,7 @@ class RepositoriesActivity : AppCompatActivity(), RepositoriesContract.View {
     override fun showRepositories(repositoryList: List<Repository>) {
         if (adapter == null) {
             adapter = RepositoriesAdapter(repositoryList)
+            adapter?.setOnItemClickListener(this)
             recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
             recyclerView.adapter = adapter
         } else {
@@ -82,7 +85,9 @@ class RepositoriesActivity : AppCompatActivity(), RepositoriesContract.View {
     }
 
     override fun openRepository(repository: Repository) {
-        //Empty for now
+        val intent = Intent(this, CommitsActivity::class.java)
+        intent.putExtra(CommitsActivity.REPOSITORY_ARG, repository.name)
+        startActivity(intent)
     }
 
     override fun moveToAuth() {
@@ -95,5 +100,9 @@ class RepositoriesActivity : AppCompatActivity(), RepositoriesContract.View {
         emptyTextView.setVisible(true)
         recyclerView.setVisible(false)
         swipeRefresh.setVisible(false)
+    }
+
+    override fun onItemClick(item: Repository) {
+        presenter.onRepositoryClick(item)
     }
 }

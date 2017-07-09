@@ -2,7 +2,6 @@ package com.kirchhoff.example.githubclient.ui.repositories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
 import com.kirchhoff.example.githubclient.R
 import com.kirchhoff.example.githubclient.model.Repository
 import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter
@@ -14,6 +13,7 @@ import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter
 class RepositoriesAdapter(items: List<Repository>)
     : BaseRecyclerAdapter<RepositoriesViewHolder, Repository>(items) {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             RepositoriesViewHolder(LayoutInflater.from(parent.context)
                     .inflate(R.layout.repository_row, parent, false))
@@ -24,4 +24,5 @@ class RepositoriesAdapter(items: List<Repository>)
         val repository = getItem(position)
         holder.bind(repository)
     }
+
 }
