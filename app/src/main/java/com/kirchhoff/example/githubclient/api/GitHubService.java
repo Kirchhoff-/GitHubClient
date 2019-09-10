@@ -14,10 +14,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 
-/**
- * @author Kirchhoff-
- */
-
 public interface GitHubService {
 
     @POST("/authorizations")

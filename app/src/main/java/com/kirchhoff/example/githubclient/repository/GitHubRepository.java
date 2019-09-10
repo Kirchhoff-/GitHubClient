@@ -14,10 +14,6 @@ import java.util.List;
 
 import rx.Observable;
 
-/**
- * @author Kirchhoff-
- */
-
 public class GitHubRepository implements GitHubDataSource {
 
     @Nullable

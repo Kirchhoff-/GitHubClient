@@ -11,10 +11,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * @author Kirchhoff-
- */
-
 public class ApiFactory {
 
     private static volatile GitHubService service;

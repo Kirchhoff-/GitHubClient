@@ -5,10 +5,6 @@ import android.support.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @author Kirchhoff-
- */
-
 public class Repository {
 
     @SerializedName("name")
@@ -63,55 +59,22 @@ public class Repository {
         return description;
     }
 
-    public void setDescription(String description) {
-        description = description == null ? "" : description;
-    }
-
     @NonNull
     public String getLanguage() {
         return language;
-    }
-
-    public void setLanguage(String language) {
-        language = language == null ? "" : language;
     }
 
     public int getStarsCount() {
         return starsCount;
     }
 
-    public void setStarsCount(int starsCount) {
-        starsCount = starsCount < 0 ? 0 : starsCount;
-    }
 
     public int getForksCount() {
         return forksCount;
     }
 
-    public void setForksCount(int forksCount) {
-        forksCount = forksCount < 0 ? 0 : forksCount;
-    }
 
     public int getWatchersCount() {
         return watchersCount;
-    }
-
-    public void setWatchersCount(int watchersCount) {
-        watchersCount = watchersCount < 0 ? 0 : watchersCount;
-    }
-
-    //Simplify for now
-    //I know that if you override equels you also need to override hashCode
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj == null || obj.getClass() != this.getClass()) {
-            return false;
-        }
-
-        Repository repository = (Repository) obj;
-        return name.equals(repository.name);
     }
 }
