@@ -1,5 +1,4 @@
 ext {
-
     //UI
     supportVersion = '25.3.1'
 
@@ -11,9 +10,6 @@ ext {
 
     //Preferences
     hawkVersion = '1.23'
-
-    //View
-    butterKnifeVersion = '8.3.0'
 
     //Test
     junitVersion = '4.12'

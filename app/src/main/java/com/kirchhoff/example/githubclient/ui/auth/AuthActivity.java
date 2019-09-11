@@ -16,26 +16,12 @@ import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.ui.general.LoadingDialog;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class AuthActivity extends AppCompatActivity implements AuthContract.View {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.loginInputLayout)
-    TextInputLayout loginInputLayout;
-
-    @BindView(R.id.loginEdit)
-    TextInputEditText loginEdit;
-
-    @BindView(R.id.passwordInputLayout)
-    TextInputLayout passwordInputLayout;
-
-    @BindView(R.id.passwordEdit)
-    TextInputEditText passwordEdit;
+    private TextInputLayout loginInputLayout;
+    private TextInputEditText loginEdit;
+    private TextInputLayout passwordInputLayout;
+    private TextInputEditText passwordEdit;
 
     private LoadingDialog loadingDialog;
 
@@ -50,21 +36,20 @@ public class AuthActivity extends AppCompatActivity implements AuthContract.View
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_auth);
-        ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        loginInputLayout = (TextInputLayout) findViewById(R.id.loginInputLayout);
+        loginEdit = (TextInputEditText) findViewById(R.id.loginEdit);
+        passwordInputLayout = (TextInputLayout) findViewById(R.id.passwordInputLayout);
+        passwordEdit = (TextInputEditText) findViewById(R.id.passwordEdit);
+        findViewById(R.id.enterButton).setOnClickListener(v -> presenter.auth(loginEdit.getText().toString(),
+                passwordEdit.getText().toString()));
+
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         presenter = new AuthPresenter(Injection.provideGitHubRepository(),
                 this,
                 Injection.provideSchedulerProvider(),
                 Injection.provideKeyValueStorage());
-    }
-
-    @SuppressWarnings("unused")
-    @OnClick(R.id.enterButton)
-    public void onEnterButtonClick() {
-        presenter.auth(loginEdit.getText().toString(),
-                passwordEdit.getText().toString());
     }
 
     @Override
