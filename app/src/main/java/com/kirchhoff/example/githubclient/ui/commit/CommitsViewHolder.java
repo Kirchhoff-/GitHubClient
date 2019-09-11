@@ -8,21 +8,15 @@ import android.widget.TextView;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.CommitResponse;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-
 class CommitsViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.commitAuthor)
-    TextView commitAuthor;
-
-    @BindView(R.id.commitMessage)
-    TextView commitMessage;
+    private final TextView commitAuthor;
+    private final TextView commitMessage;
 
     CommitsViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
+        commitAuthor = (TextView) itemView.findViewById(R.id.commitAuthor);
+        commitMessage = (TextView) itemView.findViewById(R.id.commitMessage);
     }
 
     void bind(@NonNull CommitResponse commit) {

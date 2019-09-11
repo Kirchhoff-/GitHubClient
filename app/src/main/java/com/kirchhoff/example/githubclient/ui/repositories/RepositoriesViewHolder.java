@@ -8,32 +8,23 @@ import android.widget.TextView;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.Repository;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 class RepositoriesViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.repositoryName)
-    TextView repositoryName;
-
-    @BindView(R.id.repositoryDescription)
-    TextView repositoryDescription;
-
-    @BindView(R.id.repositoryLanguage)
-    TextView repositoryLanguage;
-
-    @BindView(R.id.starCount)
-    TextView starCount;
-
-    @BindView(R.id.forkCount)
-    TextView forkCount;
-
-    @BindView(R.id.watchersCount)
-    TextView watchersCount;
+    private final TextView repositoryName;
+    private final TextView repositoryDescription;
+    private final TextView repositoryLanguage;
+    private final TextView starCount;
+    private final TextView forkCount;
+    private final TextView watchersCount;
 
     RepositoriesViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
+        repositoryName = (TextView) itemView.findViewById(R.id.repositoryName);
+        repositoryDescription = (TextView) itemView.findViewById(R.id.repositoryDescription);
+        repositoryLanguage = (TextView) itemView.findViewById(R.id.repositoryLanguage);
+        starCount = (TextView) itemView.findViewById(R.id.starCount);
+        forkCount = (TextView) itemView.findViewById(R.id.forkCount);
+        watchersCount = (TextView) itemView.findViewById(R.id.watchersCount);
     }
 
     void bind(@NonNull Repository repository) {

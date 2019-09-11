@@ -25,22 +25,11 @@ import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class RepositoriesActivity extends AppCompatActivity implements RepositoriesContract.View, BaseRecyclerAdapter.OnItemClickListener<Repository> {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-
-    @BindView(R.id.emptyTextView)
-    TextView emptyTextView;
-
-    @BindView(R.id.swipeRefresh)
-    ScrollChildSwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
+    private TextView emptyTextView;
+    private ScrollChildSwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     RepositoriesAdapter adapter;
@@ -56,9 +45,12 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_repositories);
-        ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        emptyTextView = (TextView) findViewById(R.id.emptyTextView);
+        swipeRefreshLayout = (ScrollChildSwipeRefreshLayout) findViewById(R.id.swipeRefresh);
+
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         presenter = new RepositoriesPresenter(Injection.provideGitHubRepository(),
                 Injection.provideKeyValueStorage(),
