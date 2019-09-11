@@ -5,10 +5,6 @@ import android.support.annotation.NonNull;
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
-/**
- * Implementation of the {@link BaseSchedulerProvider} making all {@link Scheduler}s immediate.
- */
-
 public class ImmediateSchedulerProvider implements BaseSchedulerProvider {
 
     @NonNull

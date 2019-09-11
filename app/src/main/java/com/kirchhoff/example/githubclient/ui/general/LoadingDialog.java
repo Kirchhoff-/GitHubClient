@@ -1,6 +1,5 @@
 package com.kirchhoff.example.githubclient.ui.general;
 
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,10 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 
 import com.kirchhoff.example.githubclient.R;
-
-/**
- * @author Kirchhoff-
- */
 
 public class LoadingDialog extends DialogFragment {
 

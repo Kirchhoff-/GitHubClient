@@ -10,13 +10,9 @@ import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter;
 
 import java.util.List;
 
-/**
- * @author Kirchhoff-
- */
-
 public class CommitsAdapter extends BaseRecyclerAdapter<CommitsViewHolder, CommitResponse> {
 
-    public CommitsAdapter(@NonNull List<CommitResponse> items) {
+    CommitsAdapter(@NonNull List<CommitResponse> items) {
         super(items);
     }
 

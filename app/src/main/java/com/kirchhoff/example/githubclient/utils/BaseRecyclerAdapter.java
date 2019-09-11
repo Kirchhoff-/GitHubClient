@@ -9,10 +9,6 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Kirchhoff-
- */
-
 public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder, T> extends
         RecyclerView.Adapter<VH> {
 
@@ -34,19 +30,9 @@ public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder, T>
         this.items.addAll(items);
     }
 
-    public final void add(@NonNull T value) {
-        items.add(value);
-        notifyDataSetChanged();
-    }
-
     public final void changeDataSet(@NonNull List<T> values) {
         items.clear();
         items.addAll(values);
-        notifyDataSetChanged();
-    }
-
-    public final void clear() {
-        items.clear();
         notifyDataSetChanged();
     }
 
@@ -62,7 +48,7 @@ public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder, T>
     }
 
     @NonNull
-    public T getItem(int position) {
+    protected T getItem(int position) {
         return items.get(position);
     }
 

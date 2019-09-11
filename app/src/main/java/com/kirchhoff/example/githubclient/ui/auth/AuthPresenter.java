@@ -11,10 +11,6 @@ import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider
 import rx.Observable;
 import rx.subscriptions.CompositeSubscription;
 
-/**
- * @author Kirchhoff-
- */
-
 public class AuthPresenter implements AuthContract.Presenter {
 
     @NonNull

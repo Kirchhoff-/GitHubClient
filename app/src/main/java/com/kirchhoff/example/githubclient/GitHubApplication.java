@@ -6,10 +6,6 @@ import com.orhanobut.hawk.Hawk;
 import com.orhanobut.hawk.HawkBuilder;
 import com.orhanobut.hawk.LogLevel;
 
-/**
- * @author Kirchhoff-
- */
-
 public class GitHubApplication extends Application {
 
     @Override

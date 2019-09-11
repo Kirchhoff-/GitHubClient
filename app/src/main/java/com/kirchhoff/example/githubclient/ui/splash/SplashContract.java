@@ -1,8 +1,5 @@
 package com.kirchhoff.example.githubclient.ui.splash;
 
-/**
- * @author Kirchhoff-
- */
 
 public interface SplashContract {
 
