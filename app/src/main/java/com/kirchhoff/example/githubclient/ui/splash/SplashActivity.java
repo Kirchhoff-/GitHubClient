@@ -9,10 +9,6 @@ import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.ui.auth.AuthActivity;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity;
 
-/**
- * @author Kirchhoff-
- */
-
 public class SplashActivity extends AppCompatActivity implements SplashContract.View {
 
     private SplashPresenter presenter;

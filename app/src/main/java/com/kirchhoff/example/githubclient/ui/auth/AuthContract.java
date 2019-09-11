@@ -5,10 +5,6 @@ import android.support.annotation.Nullable;
 import com.kirchhoff.example.githubclient.ui.BasePresenter;
 import com.kirchhoff.example.githubclient.ui.BaseView;
 
-/**
- * @author Kirchhoff-
- */
-
 public interface AuthContract {
 
 

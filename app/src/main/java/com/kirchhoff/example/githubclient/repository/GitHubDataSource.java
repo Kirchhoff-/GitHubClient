@@ -10,10 +10,6 @@ import java.util.List;
 
 import rx.Observable;
 
-/**
- * @author Kirchhoff-
- */
-
 public interface GitHubDataSource {
 
     @NonNull

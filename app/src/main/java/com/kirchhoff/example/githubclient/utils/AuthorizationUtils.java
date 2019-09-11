@@ -6,10 +6,6 @@ import android.util.Base64;
 import com.google.gson.JsonObject;
 import com.kirchhoff.example.githubclient.BuildConfig;
 
-/**
- * @author Kirchhoff-
- */
-
 public class AuthorizationUtils {
 
     private static final String BASIC_AUTHORIZATION = "Basic ";

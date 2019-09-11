@@ -10,13 +10,9 @@ import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter;
 
 import java.util.List;
 
-/**
- * @author Kirchhoff-
- */
-
 public class RepositoriesAdapter extends BaseRecyclerAdapter<RepositoriesViewHolder, Repository> {
 
-    public RepositoriesAdapter(@NonNull List<Repository> items) {
+    RepositoriesAdapter(@NonNull List<Repository> items) {
         super(items);
     }
 

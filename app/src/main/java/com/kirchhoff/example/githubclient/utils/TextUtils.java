@@ -2,10 +2,6 @@ package com.kirchhoff.example.githubclient.utils;
 
 import android.support.annotation.Nullable;
 
-/**
- * @author Kirchhoff-
- */
-
 public class TextUtils {
 
     private TextUtils() {

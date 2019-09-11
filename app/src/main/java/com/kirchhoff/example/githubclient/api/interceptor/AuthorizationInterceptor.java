@@ -11,10 +11,6 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * @author Kirchhoff-
- */
-
 public class AuthorizationInterceptor implements Interceptor {
 
     private final String token;
