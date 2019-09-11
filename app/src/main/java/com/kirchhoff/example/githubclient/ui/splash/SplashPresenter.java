@@ -9,10 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 
-/**
- * @author Kirchhoff-
- */
-
 public class SplashPresenter implements SplashContract.Presenter {
 
     @NonNull

@@ -28,10 +28,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * @author Kirchhoff-
- */
-
 public class RepositoriesActivity extends AppCompatActivity implements RepositoriesContract.View, BaseRecyclerAdapter.OnItemClickListener<Repository> {
 
     @BindView(R.id.toolbar)

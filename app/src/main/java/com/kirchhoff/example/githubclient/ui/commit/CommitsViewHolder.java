@@ -11,11 +11,8 @@ import com.kirchhoff.example.githubclient.model.CommitResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * @author Kirchhoff-
- */
 
-public class CommitsViewHolder extends RecyclerView.ViewHolder {
+class CommitsViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.commitAuthor)
     TextView commitAuthor;
@@ -23,12 +20,12 @@ public class CommitsViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.commitMessage)
     TextView commitMessage;
 
-    public CommitsViewHolder(View itemView) {
+    CommitsViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(@NonNull CommitResponse commit) {
+    void bind(@NonNull CommitResponse commit) {
         commitAuthor.setText(commit.getCommit().getAuthor().getAuthorName());
         commitMessage.setText(commit.getCommit().getMessage());
     }

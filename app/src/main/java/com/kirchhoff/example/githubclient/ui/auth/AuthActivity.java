@@ -20,10 +20,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * @author Kirchhoff-
- */
-
 public class AuthActivity extends AppCompatActivity implements AuthContract.View {
 
     @BindView(R.id.toolbar)

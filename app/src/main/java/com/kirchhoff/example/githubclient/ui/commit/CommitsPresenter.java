@@ -7,10 +7,6 @@ import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider
 
 import rx.subscriptions.CompositeSubscription;
 
-/**
- * @author Kirchhoff-
- */
-
 public class CommitsPresenter implements CommitsContract.Presenter {
 
     @NonNull

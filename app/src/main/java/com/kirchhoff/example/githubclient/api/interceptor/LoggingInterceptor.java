@@ -10,10 +10,6 @@ import okhttp3.Interceptor;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-/**
- * @author Kirchhoff-
- */
-
 public class LoggingInterceptor implements Interceptor {
 
     private final Interceptor loggingInterceptor;

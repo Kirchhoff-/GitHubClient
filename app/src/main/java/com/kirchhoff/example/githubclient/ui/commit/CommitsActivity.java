@@ -24,10 +24,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * @author Kirchhoff-
- */
-
 public class CommitsActivity extends AppCompatActivity implements CommitsContract.View {
 
     public final static String REPOSITORY_ARG = "REPOSITORY_ARG";

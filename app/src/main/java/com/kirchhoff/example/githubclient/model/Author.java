@@ -4,10 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @author Kirchhoff-
- */
-
+@SuppressWarnings("unused")
 public class Author {
 
     @SerializedName("name")
@@ -17,9 +14,4 @@ public class Author {
     public String getAuthorName() {
         return authorName;
     }
-
-    public void setAuthorName(@NonNull String authorName) {
-        this.authorName = authorName;
-    }
-
 }

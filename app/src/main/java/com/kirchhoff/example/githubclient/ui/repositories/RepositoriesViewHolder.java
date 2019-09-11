@@ -11,11 +11,7 @@ import com.kirchhoff.example.githubclient.model.Repository;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * @author Kirchhoff-
- */
-
-public class RepositoriesViewHolder extends RecyclerView.ViewHolder {
+class RepositoriesViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.repositoryName)
     TextView repositoryName;
@@ -35,12 +31,12 @@ public class RepositoriesViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.watchersCount)
     TextView watchersCount;
 
-    public RepositoriesViewHolder(View itemView) {
+    RepositoriesViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(@NonNull Repository repository) {
+    void bind(@NonNull Repository repository) {
         repositoryName.setText(repository.getName());
         repositoryDescription.setText(repository.getDescription());
         repositoryLanguage.setText(repository.getLanguage());

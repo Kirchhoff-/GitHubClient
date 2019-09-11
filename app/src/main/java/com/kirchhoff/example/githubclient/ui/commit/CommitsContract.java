@@ -8,10 +8,6 @@ import com.kirchhoff.example.githubclient.ui.BaseView;
 
 import java.util.List;
 
-/**
- * @author Kirchhoff-
- */
-
 public interface CommitsContract {
 
     interface View extends BaseView {
