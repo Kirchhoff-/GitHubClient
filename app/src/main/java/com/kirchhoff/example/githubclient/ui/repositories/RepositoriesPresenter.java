@@ -10,7 +10,7 @@ import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider
 import rx.subscriptions.CompositeSubscription;
 
 
-public class RepositoriesPresenter implements RepositoriesContract.Presenter {
+public final class RepositoriesPresenter implements RepositoriesContract.Presenter {
 
     @NonNull
     private final GitHubDataSource repository;

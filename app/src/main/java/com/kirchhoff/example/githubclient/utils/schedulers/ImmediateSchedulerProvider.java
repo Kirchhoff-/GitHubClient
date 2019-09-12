@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
-public class ImmediateSchedulerProvider implements BaseSchedulerProvider {
+public final class ImmediateSchedulerProvider implements BaseSchedulerProvider {
 
     @NonNull
     @Override

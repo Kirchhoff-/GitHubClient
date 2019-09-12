@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.orhanobut.hawk.Hawk;
 
-public class HawkKeyValueStorage implements KeyValueStorage {
+public final class HawkKeyValueStorage implements KeyValueStorage {
 
     @Nullable
     private static HawkKeyValueStorage INSTANCE = null;

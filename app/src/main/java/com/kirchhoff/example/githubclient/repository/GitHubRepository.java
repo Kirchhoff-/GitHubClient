@@ -14,7 +14,7 @@ import java.util.List;
 
 import rx.Observable;
 
-public class GitHubRepository implements GitHubDataSource {
+public final class GitHubRepository implements GitHubDataSource {
 
     @Nullable
     private static GitHubRepository INSTANCE = null;

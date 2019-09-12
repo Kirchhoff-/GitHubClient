@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CommitResponse {
+public final class CommitResponse {
 
     @SerializedName("commit")
     private Commit commit;

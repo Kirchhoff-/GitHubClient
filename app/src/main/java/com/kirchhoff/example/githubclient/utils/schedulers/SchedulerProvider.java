@@ -7,7 +7,7 @@ import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class SchedulerProvider implements BaseSchedulerProvider {
+public final class SchedulerProvider implements BaseSchedulerProvider {
 
     @Nullable
     private static SchedulerProvider INSTANCE;

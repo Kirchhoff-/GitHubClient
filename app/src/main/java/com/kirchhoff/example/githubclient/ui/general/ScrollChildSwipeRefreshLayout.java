@@ -15,7 +15,7 @@ import android.view.ViewConfiguration;
  * the refresh only when the view is on top. This class adds a way (@link #setScrollUpChild} to
  * define which view controls this behavior.
  */
-public class ScrollChildSwipeRefreshLayout extends SwipeRefreshLayout {
+public final class ScrollChildSwipeRefreshLayout extends SwipeRefreshLayout {
 
     private View mScrollUpChild;
     private int mTouchSlop;

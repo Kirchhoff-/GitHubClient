@@ -25,7 +25,7 @@ import com.kirchhoff.example.githubclient.utils.BaseRecyclerAdapter;
 
 import java.util.List;
 
-public class RepositoriesActivity extends AppCompatActivity implements RepositoriesContract.View, BaseRecyclerAdapter.OnItemClickListener<Repository> {
+public final class RepositoriesActivity extends AppCompatActivity implements RepositoriesContract.View, BaseRecyclerAdapter.OnItemClickListener<Repository> {
 
     private RecyclerView recyclerView;
     private TextView emptyTextView;

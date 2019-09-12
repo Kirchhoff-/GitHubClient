@@ -3,7 +3,7 @@ package com.kirchhoff.example.githubclient.model;
 import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("unused")
-public class Authorization {
+public final class Authorization {
 
     @SerializedName("token")
     private String token;

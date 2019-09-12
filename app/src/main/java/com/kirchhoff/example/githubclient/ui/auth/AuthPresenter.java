@@ -11,7 +11,7 @@ import com.kirchhoff.example.githubclient.utils.schedulers.BaseSchedulerProvider
 import rx.Observable;
 import rx.subscriptions.CompositeSubscription;
 
-public class AuthPresenter implements AuthContract.Presenter {
+public final class AuthPresenter implements AuthContract.Presenter {
 
     @NonNull
     private final GitHubDataSource repository;
