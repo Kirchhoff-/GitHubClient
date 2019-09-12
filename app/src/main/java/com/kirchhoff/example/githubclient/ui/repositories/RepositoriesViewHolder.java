@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.Repository;
 
-class RepositoriesViewHolder extends RecyclerView.ViewHolder {
+final class RepositoriesViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView repositoryName;
     private final TextView repositoryDescription;

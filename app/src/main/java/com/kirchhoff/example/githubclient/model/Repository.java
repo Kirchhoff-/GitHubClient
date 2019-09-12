@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Repository {
+public final class Repository {
 
     @SerializedName("name")
     private String name;

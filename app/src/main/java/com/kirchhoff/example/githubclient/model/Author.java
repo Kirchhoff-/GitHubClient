@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("unused")
-public class Author {
+public final class Author {
 
     @SerializedName("name")
     private String authorName;

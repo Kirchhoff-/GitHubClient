@@ -6,7 +6,7 @@ import com.orhanobut.hawk.Hawk;
 import com.orhanobut.hawk.HawkBuilder;
 import com.orhanobut.hawk.LogLevel;
 
-public class GitHubApplication extends Application {
+public final class GitHubApplication extends Application {
 
     @Override
     public void onCreate() {

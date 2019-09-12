@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.model.CommitResponse;
 
-class CommitsViewHolder extends RecyclerView.ViewHolder {
+final class CommitsViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView commitAuthor;
     private final TextView commitMessage;

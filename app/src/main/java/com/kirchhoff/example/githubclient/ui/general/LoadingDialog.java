@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.kirchhoff.example.githubclient.R;
 
-public class LoadingDialog extends DialogFragment {
+public final class LoadingDialog extends DialogFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -21,7 +21,7 @@ import com.kirchhoff.example.githubclient.ui.general.ScrollChildSwipeRefreshLayo
 
 import java.util.List;
 
-public class CommitsActivity extends AppCompatActivity implements CommitsContract.View {
+public final class CommitsActivity extends AppCompatActivity implements CommitsContract.View {
 
     public final static String REPOSITORY_ARG = "REPOSITORY_ARG";
 

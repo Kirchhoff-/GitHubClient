@@ -16,7 +16,7 @@ import com.kirchhoff.example.githubclient.R;
 import com.kirchhoff.example.githubclient.ui.general.LoadingDialog;
 import com.kirchhoff.example.githubclient.ui.repositories.RepositoriesActivity;
 
-public class AuthActivity extends AppCompatActivity implements AuthContract.View {
+public final class AuthActivity extends AppCompatActivity implements AuthContract.View {
 
     private TextInputLayout loginInputLayout;
     private TextInputEditText loginEdit;

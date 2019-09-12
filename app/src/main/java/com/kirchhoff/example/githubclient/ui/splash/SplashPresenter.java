@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 
-public class SplashPresenter implements SplashContract.Presenter {
+public final class SplashPresenter implements SplashContract.Presenter {
 
     @NonNull
     private final KeyValueStorage storage;
