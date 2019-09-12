@@ -1,16 +1,13 @@
 apply plugin: 'com.android.application'
 apply from: '../versions.gradle'
-apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'android-apt'
-
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "com.kirchhoff.example.githubclient"
-        minSdkVersion 19
-        targetSdkVersion 25
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -20,6 +17,9 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    flavorDimensions "default"
+
     buildTypes {
         release {
             minifyEnabled false
@@ -43,42 +43,41 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     //UI
-    compile "com.android.support:appcompat-v7:$supportVersion"
-    compile "com.android.support:support-v4:$supportVersion"
-    compile "com.android.support:recyclerview-v7:$supportVersion"
-    compile "com.android.support:cardview-v7:$supportVersion"
-    compile "com.android.support:design:$supportVersion"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:support-v4:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+    implementation "com.android.support:cardview-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
 
     //Net
-    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
-    compile "com.google.code.gson:gson:$gsonVersion"
-    compile "io.reactivex:rxandroid:$rxVersion"
-    compile "io.reactivex:rxjava:$rxVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "io.reactivex:rxandroid:$rxVersion"
+    implementation "io.reactivex:rxjava:$rxVersion"
 
     //Preferences
-    compile "com.github.orhanobut:hawk:$hawkVersion"
+    implementation "com.github.orhanobut:hawk:$hawkVersion"
 
     // Dependencies for local unit tests
-    testCompile "junit:junit:$junitVersion"
-    testCompile "org.mockito:mockito-all:$mockitoVersion"
-    testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-all:$mockitoVersion"
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
 
     // Android Testing Support Library's runner and rules
-    androidTestCompile "com.android.support.test:runner:$runnerVersion"
-    androidTestCompile "com.android.support.test:rules:$runnerVersion"
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
+    androidTestImplementation "com.android.support.test:runner:$runnerVersion"
+    androidTestImplementation "com.android.support.test:rules:$runnerVersion"
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    androidTestCompile "com.android.support.test.espresso:espresso-intents:$espressoVersion"
-    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
-    androidTestCompile "com.android.support:support-annotations:$supportVersion"
-    androidTestCompile "com.android.support:support-v4:$supportVersion"
-    androidTestCompile "com.android.support:recyclerview-v7:$supportVersion"
-    androidTestCompile "com.android.support:appcompat-v7:$supportVersion"
-    androidTestCompile "com.android.support:design:$supportVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "com.android.support:support-annotations:$supportVersion"
+    androidTestImplementation "com.android.support:support-v4:$supportVersion"
+    androidTestImplementation "com.android.support:recyclerview-v7:$supportVersion"
+    androidTestImplementation "com.android.support:appcompat-v7:$supportVersion"
+    androidTestImplementation "com.android.support:design:$supportVersion"
 }
